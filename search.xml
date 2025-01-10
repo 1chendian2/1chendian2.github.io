@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>&#39;谈谈这些天用Hexo搭建网站的心得体会&#39;</title>
+      <link href="/2025/01/09/%E8%B0%88%E8%B0%88%E8%BF%99%E4%BA%9B%E5%A4%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/"/>
+      <url>/2025/01/09/%E8%B0%88%E8%B0%88%E8%BF%99%E4%BA%9B%E5%A4%A9%E7%94%A8Hexo%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99%E7%9A%84%E5%BF%83%E5%BE%97%E4%BD%93%E4%BC%9A/</url>
+      
+        <content type="html"><![CDATA[<p>我是1月6号晚上学了Vue渐进式JS框架与Spring Boot后端框架后，学了这些技术也是为了做更难于博客的类似于淘宝购物平台的PC+Phone+Pad<br>在线购物平台与购物平台后台管理系统。之前心里一直有做博客的想法，但然后便是突发奇想，在因特网上找关于搭建博客的信息，一看到基于NPM与Node.js<br>在GitHub上搭载网站，大致浏览了下操作步骤，这些知识点我都有所涉猎。于是我便说干就干，不一会便搭建成功了。</p><p>当时搭建静态网站后，心中有些激动，但也不是特别激动，因为这种localhost网站已经数见不鲜了，然而后来我使用host d命令的时候，静态网站竟然部署到GitHub<br>上了，并且给出了网站的具体URL。这太疯狂了，意味着全世界的人在相同的网络协议TCP&#x2F;IP下，键入我的网址，便可以访问由我亲自搭建的网站！</p><p>当天晚上睡前还在想着我的网站，其实当时也只是能记录博客，没啥别的功能，再一个就是通过我所了解的HTML&#x2F;CSS&#x2F;JavaScript在这个配置信息conf文件中增加<br>一些效果，比如副标题、换颜色、使之可以与用户交互等。当时做完这些已经十点半了，由于宿舍严苛的管理政策，便不得不回去。</p><p>好了，现在我回到驻马店了，继续写这篇文章。</p><p>7号便一直在想着这个网站的建设，7号上午解接触了主题。首先是Hexo社区的主题，配置好之后发现不行，我觉得是主题太过于老旧，于是找流行的主题。<br>在这里说下关于主题选取的建议：第一，有充分的说明文档；第二，有好的社区；第三，现在仍然在维护。我一开始选择的那个老旧的主题，只看到了它的炫酷，<br>前面说的三方面一点都没有涉猎，醉了，醉了。之后便配置新主题—butterfly。</p><p>7号下午与8号便在钻研这个主题，接下来我以“问题—当时状态—解决方法”的流程描述。</p><ul><li>问题1：如何用本地图片？<p>当时状态：使用本地绝对路径—在public目录下上传—重新建仓库重新上传—在GitHub上本网站的仓库上上传—等等等等<br>或是因为hexo clean把public删了，或是因为不知为啥新仓库的图片加载不出来，或是因为指定的URL不对，等等。</p><p>最终我在8号晚上回宿舍的时候，我用手机搜hexo相关知识，偶然间看到了一篇博客：public文件夹由source文件夹下的文件生成，<br>应该把图片放在source里，hexo clean 后，清理掉public，hexo g后，由source生成public，hexo d，便把public文件夹托管到GitHub。<br>9号早上到办公室试了下，果然可以，太好了！</p><p>感悟：挺累的。</p></li><li>问题2：关于butterfly的说明文档<p>当时状态：卧槽，这说明文档写的啥呀，什么状态栏，导航栏，front-page啥的，你倒是说清楚呀。“开发不规范，码友两行泪”。</p><p>解决方法：一点一点的尝试，当时使用了hexo d部署，因为不知道hexo s生成localhost预览，导致浪费了很多时间。官方的说明文档我看了好几遍，<br>也没看明白他说的啥。这个时候我就应该像8号晚上那样找其他人的博客了。就像唐太宗李世民说的那样“以人为镜，方可明得失”，最高的智慧结晶一定是<br>由团队协作弄好的，我感觉。因为个人毕竟有其局限性。</p><p>感悟：请写一份规范的接口文档！！！我很希望有那种小白也能看懂的文档，最好再加上图文说明。之前用EasyX的时候，感觉里面很多函数都可组成一个更大的、<br>更方便的函数。挺有意思的，当时自己写文档，研究自己的代码怎么调用自己写的API，遗憾的是，我写了一个按钮就不再写了，说好听点，就是不再维护了。</p></li></ul><p>特别写下这次我与butterfly维护者的交流。我带着问题进了社区群，我的QQ昵称吸引了某前辈注意，因为我的昵称就是“物联网2201陈宏阳”，我以谦卑的姿态<br>向他请教问题，他也不吝啬自己的笔墨，告诉我hexo命令的相关知识，并把他的博客分享给我，关于“存储本地图片的问题”，他给出的解决方案是“new repository<br>或者create aliyun OSS”，但现在我已经找到了更好的方法。我非常感谢他，也意识到了沟通交流的重要性。</p><p>我所希望的是把我这个博客做大做强，在获取些微开发者赞助与广告收益的同时提升自己的个人影响力，并且能够给开发者们提供小小的帮助。</p><p>先写这么多，若我想起来啥了，后续补充。</p><span id="more"></span>]]></content>
+      
+      
+      <categories>
+          
+          <category> butterfly </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 技术 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>谈谈butterfly</title>
+      <link href="/2025/01/08/%E8%B0%88%E8%B0%88butterfly/"/>
+      <url>/2025/01/08/%E8%B0%88%E8%B0%88butterfly/</url>
+      
+        <content type="html"><![CDATA[<p>尼玛的，这狗日的参考文档是个啥啊。</p><p>要是企业开发用这个技术文档，都塔莫的别干了，原地解散吧。</p><p>参考文档做的让人看得云里雾里的</p><p>呵呵，老子不信邪了。别人能做好的，朕也可以。</p><p>FUCK YOU BUTTERFLY!!!</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> butterfly </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>谈谈情感</title>
+      <link href="/2025/01/07/%E8%B0%88%E8%B0%88%E6%83%85%E6%84%9F/"/>
+      <url>/2025/01/07/%E8%B0%88%E8%B0%88%E6%83%85%E6%84%9F/</url>
+      
+        <content type="html"><![CDATA[<p>我发觉自己现在没有一丝找对象的欲望了，真是服了自己了。</p><p>说简单也挺简单的，1天就能找到对象，不自爱的女人太多了。<br>说难也挺难的，我不仅是在为自己找对象，进而想到以后，因为她最好要承担儿媳与母亲的角色。</p><p>是双双奔跑进婚姻的殿堂，还是挽着手走进爱情的坟墓，便不得而知了。</p><p>我也没有权力去批判那些人，因为我曾经也是那些人。</p><p>我并不觉得自己是个只会发泄情感欲望的人，打比赛、搞开发、做演讲、交际，我都热衷着。<br>只是凡事皆有度，平衡好个人独处与团队工作罢了。</p><p>生活在树上，始终俯瞰大地，升上天空。</p><p>不早了，离开办公室，我要回宿舍了。</p><p>BYE.</p><span id="more"></span>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自己 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 闲聊 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>chen-first-blog</title>
+      <link href="/2025/01/06/chen-first-blog/"/>
+      <url>/2025/01/06/chen-first-blog/</url>
+      
+        <content type="html"><![CDATA[<p>今天是2025年1月6号，我用Hexo与GitHub创造了第一个Blog</p><p>快乐送大家！</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 闲聊 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2025/01/06/hello-world/"/>
+      <url>/2025/01/06/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
