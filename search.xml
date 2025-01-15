@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>使用Vercel加速Hexo静态博客访问</title>
+      <link href="/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/"/>
+      <url>/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        首先引用看到的一句话：        <blockquote>            <em>                “估计现在有很多同学使用了Hexo博客框架白嫖一套主题并部署在了Github上，                这一切看起来很容易上手，于是开开心心地去写博客了，但到后面才发现这才是“苦难”的开始：原本以为是要写博客，                但更多的时间是被用来优化网站。因为强迫症‘患者’总是对网站各种不满意，于是自己挖坑又填坑。            </em>        </blockquote>    </p></div><div>    <ol>        <li>            网站代码 repo 导入 vercel：            <br>            在Vervel中new一个新项目，将GitHub上的网站后端代码仓库导入进去，            接下来就可以通过Domains中的几个链接来访问你的网站。            <img src="/img/2025_1_15/001.png" alt="图片去外星球了">        </li>        <br>        <li>            修改DNS以及设置域名：            <br>            在域名服务提供商（阿里云、GoDaddy 等）的 DNS 解析中增加一条 CNAME 记录（将你的域名指向另一个域名）            <img src="/img/2025_1_15/002.png" alt="图片去外星球了">            添加重定向：            <img src="/img/2025_1_15/003.png" alt="图片去外星球了">        </li>        <br>    </ol>    <div>        <p>尝试一下，现在网速可能块了些，但我使用中碰到的问题有：</p>        <ul>            <li>                白天起飞            </li>            <li>                晚上坠机            </li>        </ul>    </div>    <div>        <p>            昨天晚上又研究了许久，使用Cloudfare等技术，还是不行，又把原来的好网站搞崩了，我又调了许久，才调回原来的样子。            打开音乐播放器听音乐，也没听进去，        </p>        <br>        <p>            再次感叹，希望全面拥抱创新技术！        </p>    </div>    <div>        <p>            最后再填张图        </p>        <img src="/img/2025_1_15/004.png" alt="图片去外星球了">    </div></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+            <tag> Vercel </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>测试</title>
       <link href="/2025/01/14/%E6%B5%8B%E8%AF%95/"/>
       <url>/2025/01/14/%E6%B5%8B%E8%AF%95/</url>
