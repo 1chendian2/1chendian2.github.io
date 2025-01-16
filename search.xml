@@ -8,7 +8,7 @@
       <link href="/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/"/>
       <url>/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        首先引用看到的一句话：        <blockquote>            <em>                “估计现在有很多同学使用了Hexo博客框架白嫖一套主题并部署在了Github上，                这一切看起来很容易上手，于是开开心心地去写博客了，但到后面才发现这才是“苦难”的开始：原本以为是要写博客，                但更多的时间是被用来优化网站。因为强迫症‘患者’总是对网站各种不满意，于是自己挖坑又填坑。            </em>        </blockquote>    </p></div><div>    <ol>        <li>            网站代码 repo 导入 vercel：            <br>            在Vervel中new一个新项目，将GitHub上的网站后端代码仓库导入进去，            接下来就可以通过Domains中的几个链接来访问你的网站。            <img src="/img/2025_1_15/001.png" alt="图片去外星球了">        </li>        <br>        <li>            修改DNS以及设置域名：            <br>            在域名服务提供商（阿里云、GoDaddy 等）的 DNS 解析中增加一条 CNAME 记录（将你的域名指向另一个域名）            <img src="/img/2025_1_15/002.png" alt="图片去外星球了">            添加重定向：            <img src="/img/2025_1_15/003.png" alt="图片去外星球了">        </li>        <br>    </ol>    <div>        <p>尝试一下，现在网速可能块了些，但我使用中碰到的问题有：</p>        <ul>            <li>                白天起飞            </li>            <li>                晚上坠机            </li>        </ul>    </div>    <div>        <p>            昨天晚上又研究了许久，使用Cloudfare等技术，还是不行，又把原来的好网站搞崩了，我又调了许久，才调回原来的样子。            打开音乐播放器听音乐，也没听进去，        </p>        <br>        <p>            再次感叹，希望全面拥抱创新技术！        </p>    </div>    <div>        <p>            最后再填张图        </p>        <img src="/img/2025_1_15/004.png" alt="图片去外星球了">    </div></div>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        首先引用看到的一句话：        <blockquote>            <em>                “估计现在有很多同学使用了Hexo博客框架做一个博客并部署在了Github上，                这一切看起来很容易上手，于是开开心心地去写博客内容了，但到后面才发现这才是“苦难”的开始：原本以为是要写博客内容，                但更多的时间是被用来优化网站。因为强迫症‘患者’总是对网站各种不满意，于是自己挖坑又填坑。            </em>        </blockquote>    </p></div><div>    <ol>        <li>            网站代码 repo 导入 vercel：            <br>            在Vervel中new一个新项目，将GitHub上的网站后端代码仓库导入进去，            接下来就可以通过Domains中的几个链接来访问你的网站。            <img src="/img/2025_1_15/001.png" alt="图片去外星球了">        </li>        <br>        <li>            修改DNS以及设置域名：            <br>            在域名服务提供商（阿里云、GoDaddy 等）的 DNS 解析中增加一条 CNAME 记录（将你的域名指向另一个域名）            <img src="/img/2025_1_15/002.png" alt="图片去外星球了">            添加重定向：            <img src="/img/2025_1_15/003.png" alt="图片去外星球了">        </li>        <br>    </ol>    <div>        <p>尝试一下，现在网速可能块了些，但我使用中碰到的问题有：</p>        <ul>            <li>                白天起飞            </li>            <li>                晚上坠机            </li>        </ul>    </div>    <div>        <p>            昨天晚上又研究了许久，使用Cloudfare等技术，还是不行，又把原来的好网站搞崩了，我又调了许久，才调回原来的样子。            打开音乐播放器听音乐，也没听进去，        </p>        <br>        <p>            再次感叹，希望全面拥抱创新技术！        </p>    </div>    <div>        <p>            最后再填张图        </p>        <img src="/img/2025_1_15/004.png" alt="图片去外星球了">    </div></div>]]></content>
       
       
       <categories>
@@ -150,11 +150,61 @@
     
     
     <entry>
+      <title>超越时空的爱恋｜《来自星星的你》</title>
+      <link href="/2025/01/12/%E8%B6%85%E8%B6%8A%E6%97%B6%E7%A9%BA%E7%9A%84%E7%88%B1%E6%81%8B%EF%BD%9C%E3%80%8A%E6%9D%A5%E8%87%AA%E6%98%9F%E6%98%9F%E7%9A%84%E4%BD%A0%E3%80%8B/"/>
+      <url>/2025/01/12/%E8%B6%85%E8%B6%8A%E6%97%B6%E7%A9%BA%E7%9A%84%E7%88%B1%E6%81%8B%EF%BD%9C%E3%80%8A%E6%9D%A5%E8%87%AA%E6%98%9F%E6%98%9F%E7%9A%84%E4%BD%A0%E3%80%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        1.《来自星星的你》拍摄地之N首尔塔    </p>    <p>        N首尔塔也叫南山塔，位于海拔243米的南山之巅，高236.7米，是首尔的一大地标。    </p>    <img src="/img/2025_1_16/010.png" alt="图片去外星球了">    <p>        在N首尔塔，数字化的观景台、屋顶露台、及各种餐厅等一应俱全，还可360度俯瞰首尔风光，不仅是韩国人约会的天堂，也是外国游客的旅游胜地。    </p>    <img src="/img/2025_1_16/011.png" alt="图片去外星球了">    <p>        ▼《来自星星的你》都教授跟千颂伊▼    </p>    <img src="/img/2025_1_16/012.png" alt="图片去外星球了"></div><div>    <p>        2.《来自星星的你》拍摄地之小法国村    </p>    <img src="/img/2025_1_16/013.png" alt="图片去外星球了">    <img src="/img/2025_1_16/014.png" alt="图片去外星球了"></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自己 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 情 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>我希望有个如你一般的人｜《从你的全世界路过》</title>
+      <link href="/2025/01/11/%E6%88%91%E5%B8%8C%E6%9C%9B%E6%9C%89%E4%B8%AA%E5%A6%82%E4%BD%A0%E4%B8%80%E8%88%AC%E7%9A%84%E4%BA%BA%EF%BD%9C%E3%80%8A%E4%BB%8E%E4%BD%A0%E7%9A%84%E5%85%A8%E4%B8%96%E7%95%8C%E8%B7%AF%E8%BF%87%E3%80%8B/"/>
+      <url>/2025/01/11/%E6%88%91%E5%B8%8C%E6%9C%9B%E6%9C%89%E4%B8%AA%E5%A6%82%E4%BD%A0%E4%B8%80%E8%88%AC%E7%9A%84%E4%BA%BA%EF%BD%9C%E3%80%8A%E4%BB%8E%E4%BD%A0%E7%9A%84%E5%85%A8%E4%B8%96%E7%95%8C%E8%B7%AF%E8%BF%87%E3%80%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        <strong style="color:violet;">                <blockquote>                    陈末，我们分手吧。                </blockquote>        </strong>    </p></div><div><div>    <p>        1.我希望有个如你一般的人，如山间清爽的风，如古城温暖的光，只要最后是你就好。今天，你路过了谁？谁又丢失了你呢？从你的全世界路过。    </p>    <img src="/img/2025_1_16/001.png" alt="图片去外星球了"></div><br><div>    <p>        2.我偷偷地告诉你，有一个地方，叫做稻城。我要和我最心爱的人，一起去到那里，看蔚蓝的天空，看白色的雪山，看金黄的草地，        看一场秋天的童话。我要告诉她，如果没有住在你的心里，都是客死他乡。我要告诉她，相爱这件事情，就是永远在一起。    </p>    <img src="/img/2025_1_16/002.png" alt="图片去外星球了"></div><br><div>    <p>        3.当你全力以赴，打算对一个人好的时候，你就变成了傻子、聋子。眼里除了他，什么人都没有。就连伤害，都变成了一场恋爱的检测。你还傻不兮兮地鼓励自己，安慰自己，要坚强。    </p>    <img src="/img/2025_1_16/003.png" alt="图片去外星球了"></div><br><div>    <p>        4.荔枝，你走路永远看着天空，出门不记方向，你说你不敢出远门，怕回不来，以后不怕了，不用背路名，不用买地图，        我会在这个导航仪里，一直陪着你。只要有太阳照常升起，导航仪，就永远有电。我，永远在你身边。    </p>    <img src="/img/2025_1_16/004.png" alt="图片去外星球了"></div><br><div>    <p>        5.因为心里有爱，节目才会有爱，当我们自己感到孤独的时候，我们无法温暖别人。以前陈末可以温暖那么多孤独的灵魂，只是现在，他最孤独。    </p>    <img src="/img/2025_1_16/005.png" alt="图片去外星球了"></div><br><div>    <p>        6.我多希望，我的生活可以和墙上的画一样，越来越美好，幸福得不得了。    </p>    <img src="/img/2025_1_16/006.png" alt="图片去外星球了"></div><br><div>    <p>        7.人一辈子会听到很多心里话，我很庆幸，因为我曾经听到过，我也很难过，因为我无法忘掉。        沙城，就是一个人的记忆，你无法触碰，一旦双手陷入，整座城市就会轰隆隆地崩塌，所以我们泪流满面，步步回头，可是只能向前走。    </p>    <img src="/img/2025_1_16/007.png" alt="图片去外星球了"></div><br><div>    <p>        8.因为是最蓝的天，所以，你是天使。我站在那一天的天空下，和今天的自己，一起告诉你那个秘密吧。我要让全世界都知道，荔枝，我爱你。荔枝我爱你，我永远爱你。    </p>    <img src="/img/2025_1_16/008.png" alt="图片去外星球了"></div><br><hr><hr><div>    <p>        我希望有个如你一般的人，如山间清爽的风，如古城温暖的光，        从清晨，到夜晚，从山野，到书房，一切都没有关系，只要最后是你就好。一个人，终将拥有另一个人。对你点点头，贯彻未来，数遍，生命的公路牌。    </p>    <img src="/img/2025_1_16/009.png" alt="图片去外星球了"></div><hr style="color: dodgerblue;" size="5px"><div style="text-align: center;">    <p style="font-size: 50px; color: darkred;">        全劇終    </p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自己 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 情 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>&#39;简历&#39;</title>
       <link href="/2025/01/10/%E7%AE%80%E5%8E%86/"/>
       <url>/2025/01/10/%E7%AE%80%E5%8E%86/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>陈宏阳<br>物联网2201级本科生</p><p>竞赛经历：<br>1：大学生创新创业大赛—“草木知音”—退化草场复翠先驱者<br>担任职务：总负责人<br>获得荣誉：2024年度校级三等奖</p><p>2：大学生创新创业大赛—“智巡路安”-铁轨边坡滑坡预警系统领航者计划书<br>担任职务：财务管理<br>获得荣誉：2024年度省级二等奖</p><p>3：大学生创新创业大赛—智水管家—家庭清源再造降污系统<br>担任职务：设备拼装人员<br>获得荣誉：2024年度校级三等奖</p><p>项目经历：<br>1：单机五子棋小游戏团队开发<br>技术栈：C&#x2F;C++,EasyX<br>开发工具：MSVC,EasyX_Lib,MVSIP</p><p>2:数据库课程设计<br>技术栈：MySQL,MyBatis,SpringBoot,JDBC,Java<br>开发工具：Navicat,IDEA,Maven,VSCode</p><p>3:个人博客网站<br>技术栈：Hexo,Github,Git<br>开发工具：VSCode</p>]]></content>
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉啦, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="5f702243623c38b1f7a6d2b88ecd127c43c938b1d2edf447f7c6fa76f6864363">e586eeac1f4220959faada9056b373f82b1c8c4feb3f0d34c0ef3fa164732f21b69151de9bd1d04b273215f9c6c90aa47120facfb048aa8b9ba9e1afcfe3c58a8101bac5ee01cd0c430621cf3f3257651e51c729b5ba2867afb0e19853057781ddb427c2e08b4ce0585b832c43f170f784ea44b4b2b2ac0f12495f9866b284a9ec9f7ed47c3f2a3db854d0ead7c7420ebc4ec84df565ded190bc1f8ac5eafbf6a34a2059690a2f6cab6118ec29bcf93c3ed685beaaa8e64c7f8fab109ce0583e5743086c1975449f38bb1ff277b0cdc5324a8d143684e32aae604e5bbd71e143bc50f15193c2b50c1c20ec8efc946d5ef302cd29268c2746365cc6d58081a2216e8111e5ebe8170ce15031c7c579230c22675af627c0482128f0942a00b75beb964e8715706c7aa980813fddf61581215ee90dcb1410bed1a86b6bcd53aecfff6bb6eec652d27ff57c46cc19dd45071a5217f9debf325bec427806047db5a43fd430e89f52a06222c7fb3720255bb09453994d3e4860c361abe2244e219c6e758e012c6b9015bb12dcf9d22132e170ce1ae4cb964343a4687c45db6e99feb616e2a77b377ee7db30e164ffaded10686f34c28fcefb559506d084fc70a8543fc0bdde0fc9204a2ab548013a3b1669d89b0c78065f84dd9f14126fa6942447b15dd1c653ef162c4e7bba905dd996ad44457f3a841f09a97382fd250ce3e2463180d9e8c0bc47261f05d019f720a75a0f7cb57e754e2a7fd00e8d6d5b7fefeaed244ad10e0a50b8464c6c3acd1f1e19d34d10fd8dd67aba7da24332b585137c6675b69a3dd360fe07bbd1d2d5cd156760b76888b42e5c2551a40bad371df99089f1c01cd24ba005185586a12c47e72ae2f8913ff140b684c6b928619cd59b6401bdeb85f068c65b40d0701ac1f9764560d06476960bb95b1fe16a45f73da006b459e8db15a7a1923ca17ea6de45e281911d4a71bbfdd3f1d952ac5c7126febc221d80d7e5c74575f41183664c78be3c98d47644ff8af63a9df1268d13c5a6843784c86b38ecf060e7ddd1638703f05de21778c4e6013e18108817c48ba3a787d9f3462764477379ee51435b53b9b79418df1f84f539476c4f68688a33ca2eac55b7792b18fca4e62647dc0e395ac8c9b0e0faf3e7a5550f4e7340b8ecc58e727d6b809ba1014abcd7c955c508d1d52102e52cb49e0bf8fe89a556e13a5a533fa6ca8f9a9f3802aa82ac0e59ba9ce3862b7fdee6cd07034188078d7b16d7972f591a42f81782a10466ee4398c97ecdde330571bed93cb7aa49f8775a566edff7a210064b966e7aba412a98f20522bfd3d5161a7876fad92b247ffce3ff76cbf6e17f435c77bfeb443bdd25b1a3ee3f27ed277985ab3157af0dd2420c359606f8dc86bed42c9d21b851b99ff527ec5648962454df4be4c96a197cc3675d82e04a5a53d044eb82db8680af7a9625bd5ca169f4596bd94f0cd4567f03113fbc82f159f48e29f6e1c493912f22cb05609b7f825e53de2af1dfe5e1c72773f8e032b2105a6a34794a6b3f3490ae1897c3ad1917a3defb31a9c743ffc463d3bfbec1d1d5cc9a62e46f91bfe0f3c7b3e05f2af52f4c5fb788d03e9d3c8f293363a255f4e4be</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">你好呀, 这里需要密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       
       
       
@@ -217,7 +267,7 @@
       <link href="/2025/01/07/%E8%B0%88%E8%B0%88%E6%83%85%E6%84%9F/"/>
       <url>/2025/01/07/%E8%B0%88%E8%B0%88%E6%83%85%E6%84%9F/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>我发觉自己现在没有一丝找对象的欲望了，真是服了自己了。</p><p>说简单也挺简单的，1天就能找到对象，不自爱的女人太多了。<br>说难也挺难的，我不仅是在为自己找对象，进而想到以后，因为她最好要承担儿媳与母亲的角色。</p><p>是双双奔跑进婚姻的殿堂，还是挽着手走进爱情的坟墓，便不得而知了。</p><p>我也没有权力去批判那些人，因为我曾经也是那些人。</p><p>我并不觉得自己是个只会发泄情感欲望的人，打比赛、搞开发、做演讲、交际，我都热衷着。<br>只是凡事皆有度，平衡好个人独处与团队工作罢了。</p><p>生活在树上，始终俯瞰大地，升上天空。</p><p>不早了，离开办公室，我要回宿舍了。</p><p>BYE.</p><span id="more"></span>]]></content>
+        <content type="html"><![CDATA[<div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="抱歉啦, 这个密码看着不太对, 请再试试." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">  <script id="hbeData" type="hbeData" data-hmacdigest="ad7284af4d24e0ff8b6059303864d7fe3c672d04236288801d9a0bbe34a0dda4">e586eeac1f4220959faada9056b373f82b1c8c4feb3f0d34c0ef3fa164732f21b69151de9bd1d04b273215f9c6c90aa47120facfb048aa8b9ba9e1afcfe3c58a8101bac5ee01cd0c430621cf3f3257651e51c729b5ba2867afb0e19853057781ddb427c2e08b4ce0585b832c43f170f784ea44b4b2b2ac0f12495f9866b284a9ec9f7ed47c3f2a3db854d0ead7c7420ebc4ec84df565ded190bc1f8ac5eafbf6a34a2059690a2f6cab6118ec29bcf93c3ed685beaaa8e64c7f8fab109ce0583e5743086c1975449f38bb1ff277b0cdc5c1d1c467c4b0fd0e31dfee59b86ff47ae99c002353d261f0f927e37b6367179722fdd35bad6d290b3449bf5c411a4caa0e748dca5cd1f28ea879d071511909e373dec6d1b9c0469d137970eb65973c136472838b5936c75c27938d48ea3ebb2a6f8d5fbb827941061d51ff6acf41ef5e784673374f1a9f3070189790edf5c33376e351001876ab1c7735f5136d9e3ab38d977d6d6388692ea67eabf19e24f15ecb18c5c243339b5f80a13670d614682adb39871c0aed4d9b5c66a682008717ceb93495bcb5c83a6f6ded1eeeb71c2413955ea80e84e4e1934e50aed6003c011edd57d68c5217be04917009a37570eddee98a1406c0c7149dd890c8e092cd630071e1470ee92da0993c55fea02910d83b5dc47968ff53d556897393f3a40f824b70f44dd32a6df0861560aee5f2dd9838723feec18a131ff4405ef91a4f53c50846a6c9942974c7cc30f281da66df5e4ebf220914d520c32ff36a41ae250676020af6898c93cf54c9d082b28b2e7af6a832697db4afb19d8c8c06af91fac69995b15ed6ae1a720245ff37a4a61bf609b8c250d17f94fed6fe1c39fb6d920cc3e1682c6b27205b3ed64eaa52b586584286a49d37eb407d173619db2b7b2b84b68b3c67edf3446f6fb04c120a198907ce34c2f14414696f2f0a9be65e944bd24a412dc8f8a7f72f4079404dd6cfba438671c2aa641e8e3809dd7d62a07030745f0396342af5e53474f14b27b6afcc66ed94929901b8cc51c7aada9066837ff9fd74779f4b5cf8a54fb5e6b461c32f5328715e9c61bf031a7a0ee6cefdd4a850e18d4491aca7d745b17e3f147d5df3b94e5bcc6d2aa6981cb11041ed21f5c59f531739cefc4d97ed5ea33b00934e6087f7a62e52c73cdafa9125fae78f4088d89fb0b8b9bebf184a5069a6fe8e08f010c77dbdaec1b2b84a273fee8c0f7b8548fc7f7712d45fb12f71c609a4f03e8f5b8a8e289ba70f0b84ddcadfceebf2025ee6fcfd893826448adbc35488777b0090e419a69a0e350e2ea0628e0b6bd21610fcd3bb2a03e72ef11afa51068a8a71cbc93a6e2dbde73c35f8f36f4a463a2668291dd479016a410434dd4477788c701d73a6e540efdb5cbe05fcc6dc2adcd0eefaa2b5b503a8e77f36b0c7a552b813c5ae0d</script>  <div class="hbe hbe-content">    <div class="hbe hbe-input hbe-input-default">      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">        <span class="hbe hbe-input-label-content hbe-input-label-content-default">你好呀, 这里需要密码.</span>      </label>    </div>  </div></div><script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">]]></content>
       
       
       <categories>
