@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>NPM镜像源配置</title>
+      <link href="/2025/01/16/NPM%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/"/>
+      <url>/2025/01/16/NPM%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><div>    <p>        NPM安装依赖卡慢的解决方法    </p></div><div>    <ol>        <li>            查看镜像使用状态            <code>                <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config get registry</span><br></pre></td></tr></table></figure>            </code>            如果返回 https://registry.npmmirror.co 说明配置的是淘宝镜像。        </li>        <br>        <li>            设置淘宝镜像源             <code>            <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmmirror.com</span><br></pre></td></tr></table></figure>            </code>            恢复官方镜像源            <code>            <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm config set registry https://registry.npmjs.org</span><br></pre></td></tr></table></figure>            </code>        </li>    </ol></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> NPM </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>使用Vercel加速Hexo静态博客访问</title>
       <link href="/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/"/>
       <url>/2025/01/15/%E4%BD%BF%E7%94%A8Vercel%E5%8A%A0%E9%80%9FHexo%E9%9D%99%E6%80%81%E5%8D%9A%E5%AE%A2%E8%AE%BF%E9%97%AE/</url>
