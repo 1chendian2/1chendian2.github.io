@@ -4,6 +4,25 @@
   
     
     <entry>
+      <title>对接下来的设想</title>
+      <link href="/2025/01/18/%E5%AF%B9%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E8%AE%BE%E6%83%B3/"/>
+      <url>/2025/01/18/%E5%AF%B9%E6%8E%A5%E4%B8%8B%E6%9D%A5%E7%9A%84%E8%AE%BE%E6%83%B3/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>对从现在到年底考研结束的设想</p><ol><li><p>关于专业课</p><p> 不再猛烈学习新型知识，以考研408计算机综合为主。同时对以前学过的知识加以巩固，在博客发一些MySQL、STM32、Java、Linux等知识。</p></li><li><p>关于考研课程</p><p> 初步设想为专硕：学数二、英二、政治与专业课。</p></li><li><p>关于情感</p><p> 等到自己长大成熟后再考虑吧。</p></li><li><p>未完待续……</p></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自己 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>NPM镜像源配置</title>
       <link href="/2025/01/16/NPM%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/"/>
       <url>/2025/01/16/NPM%E9%95%9C%E5%83%8F%E6%BA%90%E9%85%8D%E7%BD%AE/</url>
@@ -45,9 +64,9 @@
       
         <tags>
             
-            <tag> Hexo </tag>
-            
             <tag> Vercel </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
