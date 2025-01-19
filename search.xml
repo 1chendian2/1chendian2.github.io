@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>华为大数据结课总结与关于Linux的知识</title>
+      <link href="/2025/01/18/%E5%8D%8E%E4%B8%BA%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93%E4%B8%8E%E5%85%B3%E4%BA%8ELinux%E7%9A%84%E7%9F%A5%E8%AF%86/"/>
+      <url>/2025/01/18/%E5%8D%8E%E4%B8%BA%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93%E4%B8%8E%E5%85%B3%E4%BA%8ELinux%E7%9A%84%E7%9F%A5%E8%AF%86/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>☆<strong>Linux基础命令总结</strong></p><ol><li>切换到根目录</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure><ol start="2"><li>切换到某个文件夹下（这里以root为例,root不要写成&#x2F;root）</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd root</span><br></pre></td></tr></table></figure><ol start="3"><li>显示当前目录</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure><ol start="4"><li>返回上一级</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br></pre></td></tr></table></figure><ol start="5"><li>看有啥文件</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls</span><br></pre></td></tr></table></figure><ol start="6"><li>看看指定目录下有啥文件</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /路径</span><br></pre></td></tr></table></figure><ol start="7"><li><p>打包压缩，解包解压（tar命令）</p><ol><li>解压到指定文件夹</li></ol><p> z ：表示 tar 包是被 gzip 压缩过的 (后缀是.tar.gz)，所以解压时需要用 gunzip 解压 (.tar不需要)</p><p> x ：表示 从 tar 包中把文件提取出来</p><p> v ：表示 显示打包过程详细信息</p><p> f ：指定被处理的文件是什么</p><p> hadoop-2.8.3.tar.gz为待解压的文件</p><p> 后面是解压到指定文件夹<br> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.8.3.tar.gz -C /home/modules</span><br></pre></td></tr></table></figure></p><ol start="2"><li>解压到当前文件夹</li></ol> <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf hadoop-2.8.3.tar.gz</span><br></pre></td></tr></table></figure></li><li><p>复制（cp）<br>前者为源文件，后者为目的地</p></li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /home/extend_tools/hadoop-huaweicloud-2.8.3.33.jar /home/modules/hadoop-2.8.3/share/hadoop/common/lib/</span><br></pre></td></tr></table></figure><ol start="9"><li>创建新目录（mkdir）</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir fileName</span><br></pre></td></tr></table></figure><p>也可以使用递归式创建目录</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir /home/data/git</span><br></pre></td></tr></table></figure><ol start="10"><li>文本编辑器（vim）</li></ol><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim </span><br></pre></td></tr></table></figure><ol start="11"><li>查看当前有哪些进程（jps）</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jps</span><br></pre></td></tr></table></figure><ol start="12"><li>删除（rm）<ol><li>普通删除</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -f</span><br></pre></td></tr></table></figure><ol start="2"><li>强力删除</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf</span><br></pre></td></tr></table></figure><ol start="3"><li>删除根目录下所有的文件，即将系统格式化</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /*</span><br></pre></td></tr></table></figure></li><li>剪切（mv）</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv</span><br></pre></td></tr></table></figure><p>☆<strong>Linux操作技巧</strong></p><ol><li><p>按下Tab键自动补齐，即使显示乱码也没问题。</p></li><li><p>esc -&gt;:q!强制退出<br>esc -&gt;:w!        写入再退出</p></li></ol><p>☆<strong>碎知识点</strong></p><ol><li>云服务是企业数字化转型的趋势：<ol><li>弹性扩展（方便加大带宽）</li><li>按需计费</li><li>轻资产（盘点资产时导出EXCEL即可）</li><li>SaaS化</li><li>安全可靠<br> 总结：提高效率，降低成本</li></ol></li><li>一些工具：<ol><li>XShell   –远程控制</li><li>Putty    –远程控制</li><li>WinSCP   –远程拷贝文件</li></ol></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+            <tag> HuaWei </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>美国加州山火</title>
       <link href="/2025/01/18/%E7%BE%8E%E5%9B%BD%E5%8A%A0%E5%B7%9E%E5%B1%B1%E7%81%AB/"/>
       <url>/2025/01/18/%E7%BE%8E%E5%9B%BD%E5%8A%A0%E5%B7%9E%E5%B1%B1%E7%81%AB/</url>
@@ -136,7 +163,7 @@
       <link href="/2025/01/14/%E6%80%8E%E4%B9%88%E8%87%AA%E5%B7%B1%E6%B3%A8%E5%86%8C%E5%9F%9F%E5%90%8D/"/>
       <url>/2025/01/14/%E6%80%8E%E4%B9%88%E8%87%AA%E5%B7%B1%E6%B3%A8%E5%86%8C%E5%9F%9F%E5%90%8D/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>   <div>        <p>            <p>                这里得看阁下的财力了，金币多的买个好域名，本网站的评论系统是我花了1块4毛3买了一年的域名。            </p>            <img src="/img/2025_1_14/001.jpg" alt="图片去外星球了">            <br>            <p>                我本想着为啥这么便宜，原来和手机卡是一个套路，第二年续费一年65块。😓            </p>        </p>    </div>    <br>    <br>    <div>        <p>            这里我就不再写的非常详细了，介绍下大体流程        </p>    </div>    <br>    <br>    <div>        <ul>            <li>                在网站搜索栏键入“购买域名”，随便找到一个厂商，点击去，我这里以腾讯云为例。            </li>            <li>                找到你想要的域名后缀，点击购买，并按要求进行实名认证操作（约半小时）。            </li>            <li>                便可以有自己的域名了。            </li>        </ul>    </div>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>   <div>        <p>            <p>                这里得看阁下的财力了，金币多的买个好域名，本网站是我花了1块4毛3买了一年的域名。            </p>            <img src="/img/2025_1_14/001.jpg" alt="图片去外星球了">            <br>            <p>                我本想着为啥这么便宜，原来和手机卡是一个套路，第二年续费一年65块。😓            </p>        </p>    </div>    <br>    <br>    <div>        <p>            这里我就不再写的非常详细了，介绍下大体流程        </p>    </div>    <br>    <br>    <div>        <ul>            <li>                在网站搜索栏键入“购买域名”，随便找到一个厂商，点击去，我这里以腾讯云为例。            </li>            <li>                找到你想要的域名后缀，点击购买，并按要求进行实名认证操作（约半小时）。            </li>            <li>                便可以有自己的域名了。            </li>        </ul>    </div>]]></content>
       
       
       <categories>
