@@ -4,6 +4,50 @@
   
     
     <entry>
+      <title>谈谈婚嫁</title>
+      <link href="/2025/01/25/%E8%B0%88%E8%B0%88%E5%A9%9A%E5%AB%81/"/>
+      <url>/2025/01/25/%E8%B0%88%E8%B0%88%E5%A9%9A%E5%AB%81/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="谈谈婚与嫁"><a href="#谈谈婚与嫁" class="headerlink" title="谈谈婚与嫁"></a>谈谈婚与嫁</h2><p>在社会钟表的推动下，人们如同被上紧了的发条，被资本的浪潮不断裹挟着向前，同时作为其中的一部分零件，维持着国家机器的运转。在看似通往罗马的路上，不妨蓦然回首，叩击自己的本心，听听它的回响。｜以年少轻狂为开始，以一地鸡毛为结局的感情状态比比皆是，面对广袤无垠的面包问题，若不是对自己或者世界有着清醒的认知，极大概率成为飞蛾扑火的牺牲品，撞的头破血流、摔得粉身碎骨。理性的声音少有人听，情绪的反应让人沦为俘虏。</p><p>父母安排，亲戚撮合，熟人介绍。社会自由匹配失去驱动力了吗？还是被转嫁为家庭压力或者社会期望？相亲本质上是寻找“适合”，而非“契合”的伴侣，即使在某种意义上稳定了关系，却也可能失去了情感的真实温度，最终难免生出隔阂与迷惘，使个性的棱角在日常的争吵中被一遍遍，一遍遍的磨平，最终达成了一种诡异的合作关系。</p><p>面对广袤无垠的天空，是应该折出属于自己的纸飞机。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 情 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML基础语法之列表</title>
+      <link href="/2025/01/24/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%88%97%E8%A1%A8/"/>
+      <url>/2025/01/24/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E5%88%97%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h1 id="列表语法"><a href="#列表语法" class="headerlink" title="列表语法"></a>列表语法</h1><ul><li><p>元素及其属性介绍</p><ul><li>ol</li></ul><ol><li>定义有序列表，列表中的每一项同样用<code>&lt;li&gt;&lt;/li&gt;</code>标识</li><li>属性，reversed、start、type</li></ol><ul><li>reversed（对列表进行降序排序）</li></ul>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">reversed</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>start</li></ul>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">start</span>=<span class="string">&quot;50&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>type（规定类型为罗马字母）</li></ul>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ol</span> <span class="attr">type</span>=<span class="string">&quot;I&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Tea<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>Milk<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>dl</p><ol><li>定义列表</li><li>dl需要与dt和dd配合使用</li></ol><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dl</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Coffee<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>Black hot drink<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dt</span>&gt;</span>Milk<span class="tag">&lt;/<span class="name">dt</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">dd</span>&gt;</span>White cold drink<span class="tag">&lt;/<span class="name">dd</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dl</span>&gt;</span></span><br></pre></td></tr></table></figure><p>  显示效果：</p>  <figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;dl&gt;</span><br><span class="line">    &lt;dt&gt;Coffee&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;Black hot drink&lt;/dd&gt;</span><br><span class="line">    &lt;dt&gt;Milk&lt;/dt&gt;</span><br><span class="line">    &lt;dd&gt;White cold drink&lt;/dd&gt;</span><br><span class="line">&lt;/dl&gt;</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>HTML基础语法之段落</title>
       <link href="/2025/01/23/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%AE%B5%E8%90%BD/"/>
       <url>/2025/01/23/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E6%AE%B5%E8%90%BD/</url>
