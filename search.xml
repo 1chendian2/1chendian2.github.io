@@ -4,11 +4,36 @@
   
     
     <entry>
+      <title>谈谈妙言</title>
+      <link href="/2025/01/27/%E8%B0%88%E8%B0%88%E5%A6%99%E8%A8%80/"/>
+      <url>/2025/01/27/%E8%B0%88%E8%B0%88%E5%A6%99%E8%A8%80/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天下载了一款markdown编辑器，名为“妙言”，官方介绍为完全开源，不会上传用户数据等一系列优点，我便下载试试，在这里总结利与弊。<br><a href="https://miaoyan.app/">点击这里下载妙言</a></p><h2 id="利"><a href="#利" class="headerlink" title="利"></a>利</h2><ol><li>支持预览（VSCode也可，两者的预览仅供参考，以网站实际显示效果为准）。</li><li>字体优美（霞骛字体，听起来高大上的样子）。</li><li>轻量级，dmg包仅仅20MB。</li><li>网站主页使用Vercel进行托管，经济实惠，感觉平易近人。</li><li>等等</li></ol><h2 id="弊"><a href="#弊" class="headerlink" title="弊"></a>弊</h2><ol><li><p>令人抓狂的缩进。</p><p> 我在写嵌入文本的代码块时，遇到了棘手的问题。<br> 下面这张图片为正常显示：<br> <img src="/img/2025_1_28/001.png" alt="图片去外星球了"><br> 但当我将代码边界的三个点移动后，再移动回去时，并不会高亮显示：<br> <img src="/img/2025_1_28/002.png" alt="图片去外星球了"><br> 但是预览的时候是没有问题的，所以此处为一个bug。</p><p> 在这方面VSCode是做的不错的，他有着合理的缩进提示线：<br> <img src="/img/2025_1_28/003.png" alt="图片去外星球了"></p><p> 所以“妙言”仍不能胜任严苛的写作任务</p></li></ol><h2 id="一款好的markdown编辑器"><a href="#一款好的markdown编辑器" class="headerlink" title="一款好的markdown编辑器"></a>一款好的markdown编辑器</h2><p>我觉得一款好的编辑器需要具备：</p><ol><li>支持HTML代码自动补全。</li><li>轻量化</li><li>能够胜任大部分任务</li></ol><h2 id="总评"><a href="#总评" class="headerlink" title="总评"></a>总评</h2><p>“妙言”，它又轻又美，但是缩进的影响对我来说是不可忽略的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Markdown </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>谈谈婚嫁</title>
       <link href="/2025/01/25/%E8%B0%88%E8%B0%88%E5%A9%9A%E5%AB%81/"/>
       <url>/2025/01/25/%E8%B0%88%E8%B0%88%E5%A9%9A%E5%AB%81/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="谈谈婚与嫁"><a href="#谈谈婚与嫁" class="headerlink" title="谈谈婚与嫁"></a>谈谈婚与嫁</h2><p>在社会钟表的推动下，人们如同被上紧了的发条，被资本的浪潮不断裹挟着向前，同时作为其中的一部分零件，维持着国家机器的运转。在看似通往罗马的路上，不妨蓦然回首，叩击自己的本心，听听它的回响。｜以年少轻狂为开始，以一地鸡毛为结局的感情状态比比皆是，面对广袤无垠的面包问题，若不是对自己或者世界有着清醒的认知，极大概率成为飞蛾扑火的牺牲品，撞的头破血流、摔得粉身碎骨。理性的声音少有人听，情绪的反应让人沦为俘虏。</p><p>父母安排，亲戚撮合，熟人介绍。社会自由匹配失去驱动力了吗？还是被转嫁为家庭压力或者社会期望？相亲本质上是寻找“适合”，而非“契合”的伴侣，即使在某种意义上稳定了关系，却也可能失去了情感的真实温度，最终难免生出隔阂与迷惘，使个性的棱角在日常的争吵中被一遍遍，一遍遍的磨平，最终达成了一种诡异的合作关系。</p><p>面对广袤无垠的天空，是应该折出属于自己的纸飞机。</p>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="谈谈婚与嫁"><a href="#谈谈婚与嫁" class="headerlink" title="谈谈婚与嫁"></a>谈谈婚与嫁</h2><p>在社会钟表的推动下，人们如同被上紧了的发条，被资本的浪潮不断裹挟着向前，同时作为其中的一部分零件，维持着国家机器的运转。在看似通往罗马的路上，不妨蓦然回首，叩击自己的本心，听听它的回响。｜以年少轻狂为开始，以一地鸡毛为结局的感情状态比比皆是，面对广袤无垠的面包问题，若不是对自己或者世界有着清醒的认知，极大概率成为飞蛾扑火的牺牲品，撞的头破血流、摔得粉身碎骨。理性的声音少有人听，情绪的反应让人沦为俘虏。</p><p>父母安排，亲戚撮合，熟人介绍。社会自由匹配失去驱动力了吗？还是被转嫁为家庭压力或者社会期望？相亲本质上是寻找“适合”，而非“契合”的伴侣，即使在某种意义上稳定了关系，却也可能失去了情感的真实温度，最终难免生出隔阂与迷惘，使个性的棱角在日常的争吵中被一遍遍，一遍遍的磨平，最终达成了一种诡异的合作关系。</p>]]></content>
       
       
       
