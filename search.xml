@@ -4,13 +4,38 @@
   
     
     <entry>
-      <title>HTML基础语法之表格</title>
-      <link href="/2025/01/31/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%A1%A8%E6%A0%BC/"/>
-      <url>/2025/01/31/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%A1%A8%E6%A0%BC/</url>
+      <title>HTML基础语法之输入与其它</title>
+      <link href="/2025/02/02/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/"/>
+      <url>/2025/02/02/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
       
       
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>HTML基础语法之表格与表单</title>
+      <link href="/2025/01/31/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E5%8D%95/"/>
+      <url>/2025/01/31/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%A1%A8%E6%A0%BC%E4%B8%8E%E8%A1%A8%E5%8D%95/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li><p>table&#x2F;tr&#x2F;th&#x2F;td(row,headercell,datacell)</p><ol><li>tr中的内容默认加粗并居中</li><li>标签table没有边框—<strong>语法与实现相分离</strong></li><li>加边框—{border:1px solid black;}，写在table、th、td内即给对应的加边框</li><li>使边框合并—border-collapse:collapse;</li><li>给table加标题，需要紧挨着table开始标签，使用caption属性写在table标签内</li></ol>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;&quot;</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">caption</span>&gt;</span></span><br><span class="line">            Hdd</span><br><span class="line">        <span class="tag">&lt;/<span class="name">caption</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;&quot;</span>&gt;</span></span><br><span class="line">                1</span><br><span class="line">            <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">th</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;&quot;</span>&gt;</span></span><br><span class="line">                2</span><br><span class="line">            <span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;&quot;</span>&gt;</span></span><br><span class="line">                q1</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">&quot;border:1px solid black;&quot;</span>&gt;</span></span><br><span class="line">                q2</span><br><span class="line">            <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure><ol start="6"><li>thead&#x2F;tbody&#x2F;tfoot进行分割表格</li></ol><p>  <code>&lt;thead&gt;</code> 元素与 <code>&lt;tbody&gt;</code> 和 <code>&lt;tfoot&gt;</code> 元素结合使用，以规定表格的每个部分（页眉、正文、页脚）。</p><ul><li>colspan属性：允许th、td跨行、列显示（colspan跨行，rowspan跨列）</li></ul>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">td</span> <span class="attr">rowspan</span>=<span class="string">&quot;这里写要跨的行数&quot;</span>&gt;</span>XX<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br></pre></td></tr></table></figure><ul><li>批量设置一列或者多列的style</li></ul>  <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">colgroup</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">col</span> <span class="attr">span</span>=<span class="string">&quot;这里写列数，默认为1&quot;</span> <span class="attr">style</span>=<span class="string">&quot;这里写样式&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">colgroup</span>&gt;</span></span><br></pre></td></tr></table></figure></li><li><p>表单<code>&lt;form&gt;&lt;/form&gt;</code></p><ol><li>action&#x3D;””。交由谁处理，默认当前界面</li><li>method&#x3D;””。使用哪种HTTP方法将表单发给Server<ul><li>GET：将数据整合到URL里，不安全</li><li>POST：数据随HTTP消息主题发到服务器</li></ul></li></ol></li><li><p>button：按钮</p><ul><li>type：选择可选的属性值<ol><li>submit：提交</li><li>button：按钮</li><li>reset：重置</li></ol></li><li>formmethod&#x3D;”get&#x2F;post”，HTML5新增，修改form提交方法</li></ul></li><li><p>自动填充：由于隐私，有时候用户不希望输入框下有提示</p><ol><li>form中的autocomplete属性：on开；off关。</li><li>input中的autocomplete属性：on开；off关。</li></ol></li><li><p>自动聚焦：一打开界面，光标就会自动放在某个输入框上。</p><pre><code class="language-html"></code></pre></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> HTML </tag>
+            
+        </tags>
       
     </entry>
     
@@ -33,9 +58,9 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> MyBatis </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
@@ -248,9 +273,9 @@
       
         <tags>
             
-            <tag> JDBC </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> JDBC </tag>
             
         </tags>
       
