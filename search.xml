@@ -4,9 +4,78 @@
   
     
     <entry>
+      <title>算法-顺序表-删除顺序表L中值为x的元素</title>
+      <link href="/2025/02/02/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%88%A0%E9%99%A4%E9%A1%BA%E5%BA%8F%E8%A1%A8L%E4%B8%AD%E5%80%BC%E4%B8%BAx%E7%9A%84%E5%85%83%E7%B4%A0/"/>
+      <url>/2025/02/02/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%88%A0%E9%99%A4%E9%A1%BA%E5%BA%8F%E8%A1%A8L%E4%B8%AD%E5%80%BC%E4%B8%BAx%E7%9A%84%E5%85%83%E7%B4%A0/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。"><a href="#对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。" class="headerlink" title="对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。"></a>对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。</h2><ol><li><p>时间复杂度为 o（n^2）的暴力算法，即两个for循环。</p></li><li><p>记录不等于x的元素的个数</p></li></ol><pre><code class="language-C">void del_ x_1 (SqList &amp;L, ElemType x) &#123;    //本算法实现删除顺序表工中所有值为×的数据元素    int k=0,i;    //记录值不等于×的元素个数    for(i=0;i&lt;L.length;i++)i£（L.data［i］！=x）！</code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构-导论</title>
+      <link href="/2025/02/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AF%BC%E8%AE%BA/"/>
+      <url>/2025/02/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E5%AF%BC%E8%AE%BA/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li><p>逻辑结构</p><ol><li>集合</li><li>线性结构</li><li>树形结构</li><li>图状结构或网状结构</li></ol><p>  <img src="/img/2025_2_2/008.jpg" alt="404"></p><ul><li>1<br>  顺序表和链表都是线性结构，它们的逻辑结构相同。<br>  栈和队列虽然都是线性结构，但它们的操作规则不同，逻辑结构不完全相同。</li></ul></li></ul>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>数据结构-线性表</title>
+      <link href="/2025/02/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/"/>
+      <url>/2025/02/02/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E7%BA%BF%E6%80%A7%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li>线性表</li></ul><ol><li>线性表的定义：相同数据类型、有限、序列（有前驱与后继）。</li><li>线性表由相同数据类型的有限<strong>数据元素</strong>组成，数据元素由数据项组成。</li></ol><ul><li>顺序表</li></ul><ol><li>分为1-静态分配存储空间；2-动态分配存储空间。</li><li>优缺点<ul><li>随机访问，存储密度高</li><li>插入、删除难，不够灵活</li></ul></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>每日分享2025_2_2</title>
-      <link href="/2025/02/02/%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB2025-2-2/"/>
-      <url>/2025/02/02/%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB2025-2-2/</url>
+      <link href="/2025/02/02/%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB2025_2_2/"/>
+      <url>/2025/02/02/%E6%AF%8F%E6%97%A5%E5%88%86%E4%BA%AB2025_2_2/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p><strong>以下内容均为转载，非本人原创，所有权利归原作者或版权方所有。本人仅作分享，旨在传播有价值的信息，尊重并支持知识产权保护。如涉及版权问题，请联系删除。</strong></p><h2 id="外媒拆解DeepSeek制胜秘籍，OpenAI-CEO终于认错：我们站在了历史错误的一边"><a href="#外媒拆解DeepSeek制胜秘籍，OpenAI-CEO终于认错：我们站在了历史错误的一边" class="headerlink" title="外媒拆解DeepSeek制胜秘籍，OpenAI CEO终于认错：我们站在了历史错误的一边"></a>外媒拆解DeepSeek制胜秘籍，OpenAI CEO终于认错：我们站在了历史错误的一边</h2><p><a href="https://www.36kr.com/p/3147635441211909">点击这里</a></p>]]></content>
       
@@ -55,8 +124,8 @@
     
     <entry>
       <title>HTML基础语法之输入与其它</title>
-      <link href="/2025/02/02/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/"/>
-      <url>/2025/02/02/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/</url>
+      <link href="/2025/02/01/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/"/>
+      <url>/2025/02/01/HTML%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E4%B9%8B%E8%BE%93%E5%85%A5%E4%B8%8E%E5%85%B6%E5%AE%83/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li><p>type：此属性可以选择不同的属性值，但最终都是以按钮的形式展示</p><ol><li>submit</li><li>reset</li><li>button</li><li>text</li></ol></li><li><p>value：此属性指定在按钮上显示的值或者在文本框里预定输入的值等</p></li><li><p>name：这个名称在表单提交时，将作为键值对的一部分被发送到服务器。只有设置了name属性的表单元素，其值才会在表单提交时被传递。这意味着如果你的输入元素没有name属性，或者name属性为空，那么这个输入的值就不会与表单一起提交。</p></li><li><p>id：在一个HTML文件中，id值是唯一的，可供CSS&#x2F;JS选择器选择</p></li></ul>]]></content>
       
