@@ -4,11 +4,68 @@
   
     
     <entry>
+      <title>赛博日记2025_2_4</title>
+      <link href="/2025/02/04/%E8%B5%9B%E5%8D%9A%E6%97%A5%E8%AE%B02025-2-4/"/>
+      <url>/2025/02/04/%E8%B5%9B%E5%8D%9A%E6%97%A5%E8%AE%B02025-2-4/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Cyber-Diary"><a href="#Cyber-Diary" class="headerlink" title="Cyber Diary"></a>Cyber Diary</h2><p>盘龙山公园<br><img src="/img/2025_2_4/002.jpg" alt="404"></p><p>老君山南门<br><img src="/img/2025_2_4/003.jpg" alt="404"></p><p>标记了一处地点<br><img src="/img/2025_2_4/004.jpg" alt="404"></p><p>羊肉汤<br><img src="/img/2025_2_4/005.jpg" alt="404"></p><p>Sunshine<br><img src="/img/2025_2_4/006.jpg" alt="404"></p><p>在这里引用<strong>许渊冲先生</strong>的一句话</p><blockquote><p>生命不是活了多少日子，而是记住了多少日子。</p></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 自己 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法-顺序表-逆转顺序表</title>
+      <link href="/2025/02/04/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E9%80%86%E8%BD%AC%E9%A1%BA%E5%BA%8F%E8%A1%A8/"/>
+      <url>/2025/02/04/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E9%80%86%E8%BD%AC%E9%A1%BA%E5%BA%8F%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="如图"><a href="#如图" class="headerlink" title="如图"></a>如图</h2><p><img src="/img/2025_2_4/001.png" alt="404"></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Reverse</span><span class="params">(SqList *L,<span class="type">int</span> left,<span class="type">int</span> right,<span class="type">int</span> arrarSize)</span>&#123;</span><br><span class="line">    b   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>算法-顺序表-合并有序表</title>
+      <link href="/2025/02/03/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E8%A1%A8/"/>
+      <url>/2025/02/03/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%90%88%E5%B9%B6%E6%9C%89%E5%BA%8F%E8%A1%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="合并有序表为一个新的有序表，并由函数返回"><a href="#合并有序表为一个新的有序表，并由函数返回" class="headerlink" title="合并有序表为一个新的有序表，并由函数返回"></a>合并有序表为一个新的有序表，并由函数返回</h2><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">bool</span> <span class="title function_">Merge</span><span class="params">(SqList *a,SqList *b ,SqList *c)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(a-&gt;length + b-&gt;length &gt; c-&gt;length)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">int</span> i = <span class="number">0</span> , j = <span class="number">0</span> , k = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; a-&gt;length &amp;&amp; j &lt; b-&gt;length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(a-&gt;data[i] &lt;= b-&gt;data[j])&#123;</span><br><span class="line">            c-&gt;data[k++] = a-&gt;data[i++];</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            c-&gt;data[k++] = b-&gt;data[j++];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; a-&gt;length)&#123;</span><br><span class="line">        c-&gt;data[k++] = a-&gt;data[i++];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(j &lt; b-&gt;length)&#123;</span><br><span class="line">        c-&gt;data[k++] = b-&gt;data[j++];</span><br><span class="line">    &#125;</span><br><span class="line">    c-&gt;length = k;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>算法-顺序表-删除顺序表L中值为x的元素</title>
       <link href="/2025/02/02/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%88%A0%E9%99%A4%E9%A1%BA%E5%BA%8F%E8%A1%A8L%E4%B8%AD%E5%80%BC%E4%B8%BAx%E7%9A%84%E5%85%83%E7%B4%A0/"/>
       <url>/2025/02/02/%E7%AE%97%E6%B3%95-%E9%A1%BA%E5%BA%8F%E8%A1%A8-%E5%88%A0%E9%99%A4%E9%A1%BA%E5%BA%8F%E8%A1%A8L%E4%B8%AD%E5%80%BC%E4%B8%BAx%E7%9A%84%E5%85%83%E7%B4%A0/</url>
       
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。"><a href="#对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。" class="headerlink" title="对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。"></a>对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算身法删除顺序表中所有值为x的数据元素。</h2><ol><li><p>时间复杂度为 o（n^2）的暴力算法，即两个for循环。</p></li><li><p>记录不等于x的元素的个数<br><em>相比较与粘图片，还是使用福昕pdf复制，我觉得还是手打吧，因为我实在是看不上前两种方式</em></p></li></ol><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span></span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算法删除顺序表中所有值为x的数据元素。"><a href="#对长度为n的顺序表L，编写一个时间复杂度为-O（n）、空间复杂度为-O（1）的算法，该算法删除顺序表中所有值为x的数据元素。" class="headerlink" title="对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算法删除顺序表中所有值为x的数据元素。"></a>对长度为n的顺序表L，编写一个时间复杂度为 O（n）、空间复杂度为 O（1）的算法，该算法删除顺序表中所有值为x的数据元素。</h2><ol><li><p>时间复杂度为 o（n^2）的暴力算法，即两个for循环。</p></li><li><p>记录不等于x的元素的个数<br><em>相比较与粘图片，还是使用福昕pdf复制，我觉得还是手打吧，因为我实在是看不上前两种方式</em></p></li></ol><p>法一：记录不等于x的个数，直接替换</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">del</span><span class="params">(SeList *L,Element x)</span>&#123;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>;<span class="comment">//记录不等于x的个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span> ; i &lt; L-&gt;length;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span> (L-&gt;data[i] != x)&#123;</span><br><span class="line">            L-&gt;data[k] = L-&gt;data[i];</span><br><span class="line">            k++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L-&gt;length = k ;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>法二：记录等于x的个数，整体移位</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">del</span><span class="params">(SeList *L,Element x)</span>&#123;</span><br><span class="line">    <span class="type">int</span> k = <span class="number">0</span>,i = <span class="number">0</span> ;</span><br><span class="line">    <span class="keyword">while</span>(i &lt; L-&gt;length)&#123;</span><br><span class="line">        <span class="keyword">if</span>(L-&gt;data[i] == x)&#123;</span><br><span class="line">            k++;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            data[i-k] = data[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    L-&gt;length = L-&gt;length-k;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>法三：双指针法</p><h2 id="变种"><a href="#变种" class="headerlink" title="变种"></a>变种</h2><ul><li>从顺序表中删除其值在给定值s和t之间（包含s和t，要求s小于t）的所有元素，若s或t不合理或顺序表为空，则显示出错信息并退出运行。</li></ul>]]></content>
       
       
       <categories>
