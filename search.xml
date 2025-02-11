@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>算法-链表合集</title>
+      <link href="/2025/02/11/%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8%E5%90%88%E9%9B%86/"/>
+      <url>/2025/02/11/%E7%AE%97%E6%B3%95-%E9%93%BE%E8%A1%A8%E5%90%88%E9%9B%86/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>1. </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Del</span><span class="params">(LinkList *L，<span class="type">int</span> x)</span>&#123;</span><br><span class="line">    LinkList *p = L-&gt;next;</span><br><span class="line">    LinkList *pre = L;</span><br><span class="line">    LinkList *temp;</span><br><span class="line">    <span class="keyword">while</span>(p != null)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p -&gt;data == x)&#123;</span><br><span class="line">            temp = p;<span class="comment">//temp指向被删节点</span></span><br><span class="line">            p=p-&gt;next;</span><br><span class="line">            pre-&gt;next = p;</span><br><span class="line">            <span class="built_in">free</span>(temp);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            pre = p;</span><br><span class="line">            p = p-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><blockquote><p>其中的<code>if(p -&gt;data == x)</code>可以被替换为任何条件</p></blockquote><p>2. </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Del</span><span class="params">(LinkList *L)</span>&#123;</span><br><span class="line">    LinkList *p = L-&gt;next;</span><br><span class="line">    LinkList *pre = L;</span><br><span class="line">    LinkList *minpre = pre,*minp = p;   <span class="comment">//最小指针前驱以及最小指针</span></span><br><span class="line">    <span class="keyword">while</span>(p != null)&#123;</span><br><span class="line">        <span class="keyword">if</span>(p-&gt;data &lt; minp-&gt;data)&#123;</span><br><span class="line">            minp = p ;</span><br><span class="line">            minp = pre;</span><br><span class="line">        &#125;</span><br><span class="line">        pre = p ;</span><br><span class="line">        p = p -&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    minpre-&gt;next = minp-&gt;next;</span><br><span class="line">    <span class="built_in">free</span>(minp);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>3. </p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">void</span> <span class="title function_">Reverse</span><span class="params">(LinkList *L)</span>&#123;</span><br><span class="line">    LinkList * r = null;<span class="comment">//p为工作指针，r为p的后继指针</span></span><br><span class="line">    LinkList *p = L-&gt;next;</span><br><span class="line">    L-&gt;next = null;</span><br><span class="line">    <span class="keyword">while</span>(p != null)&#123;</span><br><span class="line">        r = p-&gt;next;</span><br><span class="line">        p-&gt;next = L-&gt;next;</span><br><span class="line">        L-&gt;next = p;</span><br><span class="line">        p = r;</span><br><span class="line">    &#125;<span class="comment">//这里使用头插法建立单链表</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>4. </p><blockquote><p>1的变种</p></blockquote><ol start="5"><li><img src="/img/2025_2_11/001.png" alt="404"></li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>用于构建网页和Web应用的技术</title>
       <link href="/2025/02/08/%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%92%8CWeb%E5%BA%94%E7%94%A8%E7%9A%84%E6%8A%80%E6%9C%AF/"/>
       <url>/2025/02/08/%E7%94%A8%E4%BA%8E%E6%9E%84%E5%BB%BA%E7%BD%91%E9%A1%B5%E5%92%8CWeb%E5%BA%94%E7%94%A8%E7%9A%84%E6%8A%80%E6%9C%AF/</url>
