@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Vue入门</title>
+      <link href="/2025/02/13/Vue%E5%85%A5%E9%97%A8/"/>
+      <url>/2025/02/13/Vue%E5%85%A5%E9%97%A8/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><ol><li>Vue是渐进式JS框架，免除JS中的DOM操作。渐进式：自底向上逐层应用，可以用Vue某层的功能，也可以与第三方库整合</li><li>用CDN方式引入Vue.js，无需本地安装</li><li>使用framework的好处，进行大型开发时方便管理与维护</li><li>数据绑定（基于MVVM思想）<ul><li>单向绑定：<code>&#123;&#123;&#125;&#125;</code>，这是插值表达式，只能从model流向view。</li><li>双向绑定：v-model，实现展示与交互</li><li>事件绑定：v-on:click</li></ul></li></ol><h3 id="前端工程化"><a href="#前端工程化" class="headerlink" title="前端工程化"></a>前端工程化</h3><p>Vue-cli是Vue官方提供的一个脚手架，快速生成Vue项目模板（依赖环境Node.js）<br><img src="/img/2025_2_13/001.png" alt="404"></p><ol><li><p>创建方式 <code>npm create vue@latest</code><br>安装依赖：<code>npm i</code>，之后会出现node_modules文件夹。作用是使ts文件认识jpg、txt等类型的文件</p></li><li><p>文件解读</p></li></ol><ul><li>node_modules：项目依赖包</li><li>public：存放静态文件</li><li>src：源代码</li><li>assets：静态资源</li><li>components：可重用组件</li><li>router：路由配置</li><li>views：页面（视图组件）</li><li>main.js：入口js文件</li><li>App.vue：根组件（入口界面）</li><li>package.json：模块基本信息</li><li>vue.config.js：代理、端口等配置</li></ul><h3 id="vue文件的组成"><a href="#vue文件的组成" class="headerlink" title=".vue文件的组成"></a>.vue文件的组成</h3><ol><li><code>&lt;template&gt;</code>：模板部分，生成HTML代码</li><li><code>&lt;script&gt;</code>：定义模板的数据来源与行为</li><li><code>&lt;style&gt;</code>：CSS样式部分</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构-栈与队列</title>
       <link href="/2025/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/"/>
       <url>/2025/02/13/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E6%A0%88%E4%B8%8E%E9%98%9F%E5%88%97/</url>
