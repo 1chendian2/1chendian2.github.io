@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>排水工程</title>
+      <link href="/2025/02/15/%E6%8E%92%E6%B0%B4%E5%B7%A5%E7%A8%8B/"/>
+      <url>/2025/02/15/%E6%8E%92%E6%B0%B4%E5%B7%A5%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>由于地板是水泥，下雨天水便会积水，我们便想法子，增加一根管子使其排到外面。</p></blockquote><p><img src="/img/2025_2_15/005.png" alt="404"></p><p><img src="/img/2025_2_15/006.png" alt="404"></p><p><img src="/img/2025_2_15/007.png" alt="404"></p><p><img src="/img/2025_2_15/008.png" alt="404"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>南山行2025/2/15</title>
+      <link href="/2025/02/15/%E5%8D%97%E5%B1%B1%E8%A1%8C2025-2-15/"/>
+      <url>/2025/02/15/%E5%8D%97%E5%B1%B1%E8%A1%8C2025-2-15/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><blockquote><p>今日登顶南山</p></blockquote><p><img src="/img/2025_2_15/001.png" alt="404"></p><p><img src="/img/2025_2_15/002.png" alt="404"></p><p><img src="/img/2025_2_15/003.png" alt="404"></p><p><img src="/img/2025_2_15/004.png" alt="404"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>搜索引擎组件的添加</title>
       <link href="/2025/02/14/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B7%BB%E5%8A%A0/"/>
       <url>/2025/02/14/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%BB%84%E4%BB%B6%E7%9A%84%E6%B7%BB%E5%8A%A0/</url>
@@ -519,9 +557,9 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> MyBatis </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
@@ -734,9 +772,9 @@
       
         <tags>
             
-            <tag> JDBC </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> JDBC </tag>
             
         </tags>
       
