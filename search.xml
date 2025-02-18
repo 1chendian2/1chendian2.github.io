@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Linux课程总结（持续更新中）</title>
+      <link href="/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/"/>
+      <url>/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>前言：启动某个程序:查找程序在硬盘上安装位置，然后将其加载到内存运行。真正能控制硬件(CPU,显示器,内存)的只有OS kernel。但由于安生,复杂等原因用户不能直接接触内核，则在user与kernel增加一层“代理”（UI与命令行程序）。来接收用户操作,简单处理后传给 kernel。</p><ol><li>Shell是一个命令行程序,连接user与Linux kernel，让user更高效用Linux kernel。运行一个命令，大部分情况下Shell都会调用内核暴露出来的接口。这就是在使用内核。</li><li>Shell也支持编程。Shell也是一种脚本语言(Script),解释型语言的别称是脚本语言(Script)。</li></ol><h3 id="职位"><a href="#职位" class="headerlink" title="职位"></a>职位</h3><ol><li>前端：Vue</li><li>后端：Spring Boot</li><li>测试：测试工具</li><li>售前：demo版本</li><li>运维与交付：对客户培训</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>VCD/DVD上的.dat文件转换成mp4的方法</title>
       <link href="/2025/02/16/VCD-DVD%E4%B8%8A%E7%9A%84-dat%E6%96%87%E4%BB%B6%E8%BD%AC%E6%8D%A2%E6%88%90mp4%E7%9A%84%E6%96%B9%E6%B3%95/"/>
       <url>/2025/02/16/VCD-DVD%E4%B8%8A%E7%9A%84-dat%E6%96%87%E4%BB%B6%E8%BD%AC%E6%8D%A2%E6%88%90mp4%E7%9A%84%E6%96%B9%E6%B3%95/</url>
@@ -582,9 +607,9 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -797,9 +822,9 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> JDBC </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
