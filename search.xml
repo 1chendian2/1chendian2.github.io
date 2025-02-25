@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Hexo博客增加豆瓣个人界面</title>
+      <link href="/2025/02/25/Hexo%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E8%B1%86%E7%93%A3%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/"/>
+      <url>/2025/02/25/Hexo%E5%8D%9A%E5%AE%A2%E5%A2%9E%E5%8A%A0%E8%B1%86%E7%93%A3%E4%B8%AA%E4%BA%BA%E7%95%8C%E9%9D%A2/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Hexo添加豆瓣个人页面"><a href="#Hexo添加豆瓣个人页面" class="headerlink" title="Hexo添加豆瓣个人页面"></a>Hexo添加豆瓣个人页面</h2><ol><li>安装<code>hexo-douban</code>插件</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-douban --save-dev</span><br></pre></td></tr></table></figure><ol start="2"><li>在博客站点的配置文件<code>_config.yml</code>中添加以下内容</li></ol><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">douban:</span></span><br><span class="line">  <span class="attr">id:</span> <span class="string">xxxx</span>  <span class="comment"># 豆瓣ID，https://www.douban.com/people/xxxxxx/&quot; ，其中的”xxxxxx”就是个人ID。（只包含数字）</span></span><br><span class="line">  <span class="attr">builtin:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">book:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;标题名字&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;首界面显示一句话&#x27;</span></span><br><span class="line">  <span class="attr">movie:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;那标题名字&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;首界面显示一句话&#x27;</span></span><br><span class="line">  <span class="attr">game:</span></span><br><span class="line">    <span class="attr">title:</span> <span class="string">&#x27;标题名字&#x27;</span></span><br><span class="line">    <span class="attr">quote:</span> <span class="string">&#x27;首界面显示一句话&#x27;</span></span><br><span class="line">  <span class="attr">timeout:</span> <span class="number">10000</span> <span class="comment"># 超时的时间，单位是毫秒</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 是否将生成页面的功能嵌入hexo s和hexo g中，默认是false,另一可选项为true。</span></span><br><span class="line">    <span class="comment"># 如果配置了builtin参数为true，那么除了可以使用hexo douban命令之外，hexo g或hexo s也内嵌了生成页面的功能。</span></span><br><span class="line">    <span class="comment"># 原来的hexo d变得模棱两可，需要使用hexo deploy</span></span><br></pre></td></tr></table></figure><p><a href="https://www.douban.com/">豆瓣网链接</a></p><ol start="3"><li>如果上面的配置都没有问题，就可以使用以下地址访问</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">http://localhost:4000/books</span><br><span class="line">http://localhost:4000/movies</span><br><span class="line">http://localhost:4000/games</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">此时books、movies、games不需要使用hexo new page xxx来创建，配置hexo-douban后会自动创建。</span></span><br></pre></td></tr></table></figure><ol start="4"><li>在导航栏中添加相应的选项</li></ol><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">Home:</span> <span class="string">/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-home</span></span><br><span class="line"><span class="attr">Archives:</span> <span class="string">/archives/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-archive</span></span><br><span class="line"><span class="attr">Tags:</span> <span class="string">/tags/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-tags</span></span><br><span class="line"><span class="attr">Categories:</span> <span class="string">/categories/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-folder-open</span></span><br><span class="line"><span class="string">List||fas</span> <span class="attr">fa-list:</span></span><br><span class="line">  <span class="attr">Music:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">  <span class="attr">Movie:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br><span class="line"><span class="attr">Link:</span> <span class="string">/link/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-link</span></span><br><span class="line"><span class="attr">About:</span> <span class="string">/about/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-heart</span></span><br></pre></td></tr></table></figure><p>默认子目录是展开的，如果你想要隐藏，在子目录里添加 hide 。</p><figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">List||fas</span> <span class="string">fa-list||hide:</span></span><br><span class="line">  <span class="attr">Music:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br><span class="line">  <span class="attr">Movie:</span> <span class="string">/movies/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-video</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构-串</title>
       <link href="/2025/02/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%B2/"/>
       <url>/2025/02/22/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%B8%B2/</url>
@@ -14,6 +41,8 @@
       <categories>
           
           <category> 技术 </category>
+          
+          <category> 数据结构 </category>
           
       </categories>
       
@@ -111,6 +140,8 @@
           
           <category> 技术 </category>
           
+          <category> 小工具 </category>
+          
       </categories>
       
       
@@ -154,6 +185,8 @@
       <categories>
           
           <category> 生活 </category>
+          
+          <category> 旅行 </category>
           
       </categories>
       
@@ -253,6 +286,8 @@
           
           <category> 技术 </category>
           
+          <category> 数据结构 </category>
+          
       </categories>
       
       
@@ -277,6 +312,8 @@
       <categories>
           
           <category> 技术 </category>
+          
+          <category> 数据结构 </category>
           
       </categories>
       
@@ -328,6 +365,8 @@
           
           <category> 技术 </category>
           
+          <category> 数据结构 </category>
+          
       </categories>
       
       
@@ -352,6 +391,8 @@
       <categories>
           
           <category> 生活 </category>
+          
+          <category> 旅行 </category>
           
       </categories>
       
@@ -391,6 +432,8 @@
           
           <category> 技术 </category>
           
+          <category> 数据结构 </category>
+          
       </categories>
       
       
@@ -416,6 +459,8 @@
           
           <category> 技术 </category>
           
+          <category> 数据结构 </category>
+          
       </categories>
       
       
@@ -436,6 +481,14 @@
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><ul><li><p>逻辑结构</p><ol><li>集合</li><li>线性结构</li><li>树形结构</li><li>图状结构或网状结构</li></ol><p>  <img src="/img/2025_2_2/008.jpg" alt="404"></p><ul><li>1<br>  顺序表和链表都是线性结构，它们的逻辑结构相同。<br>  栈和队列虽然都是线性结构，但它们的操作规则不同，逻辑结构不完全相同。（存在争议）</li></ul></li></ul>]]></content>
       
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 数据结构 </category>
+          
+      </categories>
       
       
         <tags>
@@ -485,14 +538,10 @@
           
           <category> 生活 </category>
           
+          <category> 旅行 </category>
+          
       </categories>
       
-      
-        <tags>
-            
-            <tag> 爬山 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -587,12 +636,14 @@
           
           <category> 技术 </category>
           
+          <category> Hexo </category>
+          
       </categories>
       
       
         <tags>
             
-            <tag> hexo </tag>
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -633,10 +684,18 @@
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="谈谈婚与嫁"><a href="#谈谈婚与嫁" class="headerlink" title="谈谈婚与嫁"></a>谈谈婚与嫁</h2><p>在社会钟表的推动下，人们如同被上紧了的发条，被资本的浪潮不断裹挟着向前，同时作为其中的一部分零件，维持着国家机器的运转。在看似通往罗马的路上，不妨蓦然回首，叩击自己的本心，听听它的回响。｜以年少轻狂为开始，以一地鸡毛为结局的感情状态比比皆是，面对广袤无垠的面包问题，若不是对自己或者世界有着清醒的认知，极大概率成为飞蛾扑火的牺牲品，撞的头破血流、摔得粉身碎骨。理性的声音少有人听，情绪的反应让人沦为俘虏。</p><p>父母安排，亲戚撮合，熟人介绍。社会自由匹配失去驱动力了吗？还是被转嫁为家庭压力或者社会期望？相亲本质上是寻找“适合”，而非“契合”的伴侣，即使在某种意义上稳定了关系，却也可能失去了情感的真实温度，最终难免生出隔阂与迷惘，使个性的棱角在日常的争吵中被一遍遍，一遍遍的磨平，最终达成了一种诡异的合作关系。</p>]]></content>
       
       
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 深度议论 </category>
+          
+      </categories>
+      
       
         <tags>
             
-            <tag> 情 </tag>
+            <tag> LOVE </tag>
             
         </tags>
       
@@ -723,7 +782,7 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
           
       </categories>
       
@@ -742,7 +801,7 @@
       
       <categories>
           
-          <category> 计算机基础 </category>
+          <category> 技术 </category>
           
       </categories>
       
@@ -769,12 +828,16 @@
           
           <category> 技术 </category>
           
+          <category> Hexo </category>
+          
       </categories>
       
       
         <tags>
             
             <tag> Butterfly </tag>
+            
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -865,7 +928,9 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
+          
+          <category> 任务 </category>
           
       </categories>
       
@@ -911,6 +976,8 @@
           
           <category> 技术 </category>
           
+          <category> Hexo </category>
+          
       </categories>
       
       
@@ -921,19 +988,6 @@
             <tag> Vercel </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>测试</title>
-      <link href="/2025/01/14/%E6%B5%8B%E8%AF%95/"/>
-      <url>/2025/01/14/%E6%B5%8B%E8%AF%95/</url>
-      
-        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script>]]></content>
-      
-      
       
     </entry>
     
@@ -981,7 +1035,7 @@
       
         <tags>
             
-            <tag> domain </tag>
+            <tag> Domain </tag>
             
         </tags>
       
@@ -1030,14 +1084,16 @@
           
           <category> 技术 </category>
           
+          <category> Hexo </category>
+          
       </categories>
       
       
         <tags>
             
-            <tag> hexo </tag>
+            <tag> Butterfly </tag>
             
-            <tag> butterfly </tag>
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1055,14 +1111,14 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 情 </tag>
+            <tag> LOVE </tag>
             
         </tags>
       
@@ -1080,14 +1136,14 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 情 </tag>
+            <tag> LOVE </tag>
             
         </tags>
       
@@ -1118,14 +1174,16 @@
       
       <categories>
           
-          <category> butterfly </category>
+          <category> 技术 </category>
+          
+          <category> Hexo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 技术 </tag>
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1143,14 +1201,16 @@
       
       <categories>
           
-          <category> butterfly </category>
+          <category> 技术 </category>
+          
+          <category> Hexo </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 闲聊 </tag>
+            <tag> Hexo </tag>
             
         </tags>
       
@@ -1168,14 +1228,16 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
+          
+          <category> 深度议论 </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 闲聊 </tag>
+            <tag> LOVE </tag>
             
         </tags>
       
@@ -1191,12 +1253,12 @@
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>今天是2025年1月6号，我用Hexo与GitHub创造了第一个Blog</p><p>快乐送大家！</p>]]></content>
       
       
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
       
-        <tags>
-            
-            <tag> 闲聊 </tag>
-            
-        </tags>
       
     </entry>
     
@@ -1225,7 +1287,9 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
+          
+          <category> 深度议论 </category>
           
       </categories>
       
@@ -1244,7 +1308,9 @@
       
       <categories>
           
-          <category> 自己 </category>
+          <category> 生活 </category>
+          
+          <category> 旅行 </category>
           
       </categories>
       
