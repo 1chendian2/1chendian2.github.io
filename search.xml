@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Android开发课程</title>
+      <link href="/2025/05/06/Android%E5%BC%80%E5%8F%91%E8%AF%BE%E7%A8%8B/"/>
+      <url>/2025/05/06/Android%E5%BC%80%E5%8F%91%E8%AF%BE%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><p>河南理工大学Android开发课程：共40学时（24理论学时、16实践学时），学分2.5。</p><h3 id="Android四层结构"><a href="#Android四层结构" class="headerlink" title="Android四层结构"></a>Android四层结构</h3><p><img src="/img/2025_5_6/001.png" alt="404"></p><ul><li><p>应用层(System Apps)<br>系统内置的应用程序以及非系统级的应用程序都属于应用层，负责与用户进行交互，一般使用Java或者Kotlin开发，也就是我们所说的应用层开发。</p></li><li><p>应用框架层(Java API Framework)<br>这一层为应用层开发提供所需要的Java API，也就是我们常说的Android系统的Java源码，这一层由Java代码编写，所以叫做Java Framework。</p></li><li><p>系统运行库层(Native)<br>从图中可以看出这里分为了俩个部分，分别是C&#x2F;C++程序库和Android运行时库。</p></li></ul><ol><li><p>C&#x2F;C++库<br>这些C&#x2F;C++库程序可以被应用框架层所使用，至于为什么Android系统要使用C&#x2F;C++库，而不都用Java库，原因主要是C&#x2F;C++代码执行效率更高，而且很多功能有成熟的C++代码，不用重新写</p></li><li><p>Android运行时库<br>分为核心库和ART。*（Android运行时环境（ART）自Android 4.4版本引入，并在后续版本中逐步取代了原有的Dalvik作为Android平台的默认运行时环境。）*其中核心库提供了Java语言核心库的大多数功能，这样开发者可以使用Java语言来编写Android应用。而ART则是专门为移动设备定制的Java虚拟机，在之前还有被淘汰的Dalvik虚拟机。ART和JVM还是有很大的区别，它是由C++编写，用来运行Java程序，所以非常关键。而且Android系统还允许同时允许多个ART实例，所以在Android系统中，每个进程都有一个虚拟机，一个APP发生崩溃不会影响其他APP。</p></li></ol><ul><li>Linux内核层(Linux Kernel)<br>Android的核心服务是基于Linux内核，同时在该基础上添加了Android专用的驱动，比如Binder。由于Linux系统的优秀性，Android在基于Linux于安全性、内存管理、进程管理等都有很大优势。</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Android </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>解答计算机组成原理一些问题</title>
       <link href="/2025/05/05/%E8%A7%A3%E7%AD%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
       <url>/2025/05/05/%E8%A7%A3%E7%AD%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
