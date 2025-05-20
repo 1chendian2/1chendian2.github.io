@@ -4,6 +4,27 @@
   
     
     <entry>
+      <title>计算机网络（408考研）</title>
+      <link href="/2025/05/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/"/>
+      <url>/2025/05/20/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><h4 id="CSMA-CD协议中最短帧长的界定"><a href="#CSMA-CD协议中最短帧长的界定" class="headerlink" title="CSMA&#x2F;CD协议中最短帧长的界定"></a>CSMA&#x2F;CD协议中最短帧长的界定</h4><p>在以太网（CSMA&#x2F;CD）中：</p><ol><li>发送数据时，设备会持续监听信道（边发边听）。</li><li>如果发送的数据和监听到的信号不一致，说明发生了冲突。</li><li>一旦检测到冲突发送方会立即停止发送，并执行退避算法等待重传。</li></ol><p>如果帧太短的话：</p><ol><li>在冲突信号返回 A 之前，A 已经发完了整个帧。</li><li>A 停止监听信道（因为帧已经发完），无法检测到冲突。</li><li>结果：A 以为发送成功，但实际上数据已经因冲突被破坏。</li></ol><p>需要界定最短帧长，那么临界点就是传数据的时间占用整个争用期（2τ）</p><p>为什么“2τ × 速率”是最短帧长？</p><ol><li>2τ 是冲突信号返回的最长时间。</li><li>速率 决定单位时间能发送多少比特。</li><li>乘积 就是“在冲突信号返回前，最少要发送多少比特”。</li><li>这里的（τ）为总线传播时延，就是在链路上传输消耗的时间。</li></ol><h4 id="以太网：物理上星型结构、逻辑上是总线型结构"><a href="#以太网：物理上星型结构、逻辑上是总线型结构" class="headerlink" title="以太网：物理上星型结构、逻辑上是总线型结构"></a>以太网：物理上星型结构、逻辑上是总线型结构</h4><p><img src="/img/2025_5_20/001.png" alt="404"></p><p>由于电信号在网线中传输时会衰减，集线器的作用是 接收信号并重新放大，再广播给所有端口。</p><h4 id="IEEE-802-11-无线局域网"><a href="#IEEE-802-11-无线局域网" class="headerlink" title="IEEE 802.11 无线局域网"></a>IEEE 802.11 无线局域网</h4><h5 id="有固定设施的"><a href="#有固定设施的" class="headerlink" title="有固定设施的"></a>有固定设施的</h5><p><img src="/img/2025_5_20/002.png" alt="404"></p><p>为什么AP会改变？</p><ol><li>无线信号覆盖限制：单个AP的覆盖范围有限，移动设备（A）远离原AP（AP1）时，信号变弱，需切换到新AP（AP2）。</li><li>无缝漫游：在ESS中，所有AP共享同一个网络标识（SSID），设备可自动切换AP，而用户无感知。</li><li>AP改变但通信不中断：</li><li>高层协议（如TCP&#x2F;IP）不受影响，因为分配系统（DS）确保了数据转发。</li><li>只有物理层和链路层的连接点（AP）发生变化。</li></ol><h5 id="无固定设施的自组织网络"><a href="#无固定设施的自组织网络" class="headerlink" title="无固定设施的自组织网络"></a>无固定设施的自组织网络</h5><p>军事战场通信</p><ul><li><p>场景：<br>士兵携带的无线设备（如战术电台、无人机）在野外快速部署，没有固定基站。</p></li><li><p>自组网如何工作：</p></li></ul><p>设备自动发现附近的战友设备，形成临时网络。</p><p>每台设备既是通信终端，也是路由器，负责转发其他设备的数据。</p><p>如果某个士兵移动（如前进或撤退），网络拓扑动态调整，自动选择新路径。</p><ul><li>与移动IP的区别：</li></ul><p>移动IP需要依赖固定基站和互联网基础设施，而自组网完全独立运行。</p><ul><li><p>注意区分与移动IP的区别<br><img src="/img/2025_5_20/003.png" alt="404"></p></li><li><p>手机热点是自组织网络吗？<br><img src="/img/2025_5_20/004.png" alt="404"></p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 计算机网络 </category>
+          
+      </categories>
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Android开发课程</title>
       <link href="/2025/05/06/Android%E5%BC%80%E5%8F%91%E8%AF%BE%E7%A8%8B/"/>
       <url>/2025/05/06/Android%E5%BC%80%E5%8F%91%E8%AF%BE%E7%A8%8B/</url>
