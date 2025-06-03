@@ -1006,9 +1006,9 @@
       
         <tags>
             
-            <tag> MyBatis </tag>
-            
             <tag> MySQL </tag>
+            
+            <tag> MyBatis </tag>
             
         </tags>
       
@@ -1254,9 +1254,9 @@
       
         <tags>
             
-            <tag> MySQL </tag>
-            
             <tag> JDBC </tag>
+            
+            <tag> MySQL </tag>
             
         </tags>
       
