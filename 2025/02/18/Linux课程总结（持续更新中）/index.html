@@ -1,0 +1,806 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux课程总结（持续更新中） | 陈同学的桃花源</title><meta name="author" content="陈淀"><meta name="copyright" content="陈淀"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Linux常用命令Shell前言：启动某个程序:查找程序在硬盘上安装位置，然后将其加载到内存运行。真正能控制硬件(CPU,显示器,内存)的只有OS kernel。但由于安全,复杂等原因用户不能直接接触内核，则在user与kernel增加一层“代理”（UI与命令行程序）。来接收用户操作,简单处理后传给 kernel。  Shell是一个命令行程序,连接user与Linux kernel，让user更">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux课程总结（持续更新中）">
+<meta property="og:url" content="https://chenhongyang86.fun/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/index.html">
+<meta property="og:site_name" content="陈同学的桃花源">
+<meta property="og:description" content="Linux常用命令Shell前言：启动某个程序:查找程序在硬盘上安装位置，然后将其加载到内存运行。真正能控制硬件(CPU,显示器,内存)的只有OS kernel。但由于安全,复杂等原因用户不能直接接触内核，则在user与kernel增加一层“代理”（UI与命令行程序）。来接收用户操作,简单处理后传给 kernel。  Shell是一个命令行程序,连接user与Linux kernel，让user更">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chenhongyang86.fun/img/%E6%8A%A4%E7%9C%BC-%E7%AA%97.png">
+<meta property="article:published_time" content="2025-02-18T07:01:43.000Z">
+<meta property="article:modified_time" content="2025-04-29T09:32:28.595Z">
+<meta property="article:author" content="陈淀">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chenhongyang86.fun/img/%E6%8A%A4%E7%9C%BC-%E7%AA%97.png"><link rel="shortcut icon" href="/img/bitbug_favicon.ico"><link rel="canonical" href="https://chenhongyang86.fun/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 7 || hour >= 22
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":true,"top_n_per_article":3,"unescape":false,"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":3,"languages":{"author":"作者: 陈淀","link":"链接: ","source":"来源: 陈同学的桃花源","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'null',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#723FE8","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux课程总结（持续更新中）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  isShuoshuo: false
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="web_bg" style="background-image: url(/img/树林-车站.png);"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/My.jpg" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-eye"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/2025/01/10/%E7%AE%80%E5%8E%86/"><i class="fa-fw fa-solid fa-user"></i><span> 个人简历</span></a></div><div class="menus_item"><a class="site-page" href="/weather"><i class="fa-fw fa-solid fa-cloud-showers-water"></i><span> 家的天气</span></a></div><div class="menus_item"><a class="site-page" href="/search"><i class="fa-fw fa-solid fa-binoculars"></i><span> 联网搜索</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/movies"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/link"><i class="fa-fw fa-solid fa-link"></i><span> 链接</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg fixed" id="page-header" style="background-image: url(/img/护眼-窗.png);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><img class="site-icon" src="/img/%E6%9C%88%E4%BA%AE.png" alt="Logo"></a><a class="nav-page-title" href="/"><span class="site-name">Linux课程总结（持续更新中）</span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fa-solid fa-eye"></i><span> 主页</span></a></div><div class="menus_item"><a class="site-page" href="/2025/01/10/%E7%AE%80%E5%8E%86/"><i class="fa-fw fa-solid fa-user"></i><span> 个人简历</span></a></div><div class="menus_item"><a class="site-page" href="/weather"><i class="fa-fw fa-solid fa-cloud-showers-water"></i><span> 家的天气</span></a></div><div class="menus_item"><a class="site-page" href="/search"><i class="fa-fw fa-solid fa-binoculars"></i><span> 联网搜索</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> 娱乐</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/movies"><i class="fa-fw fas fa-film"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books"><i class="fa-fw fas fa-book"></i><span> 书籍</span></a></li><li><a class="site-page child" href="/link"><i class="fa-fw fa-solid fa-link"></i><span> 链接</span></a></li></ul></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Linux课程总结（持续更新中）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="fa-fw post-meta-icon far fa-calendar-alt"></i><span class="post-meta-label">发表于</span><time datetime="2025-02-18T07:01:43.000Z" title="发表于 2025-02-18 15:01:43">2025-02-18</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E6%8A%80%E6%9C%AF/">技术</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">7.6k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>28分钟</span></span><span class="post-meta-separator">|</span><span id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="twikoo_visitors"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h2 id="Linux常用命令"><a href="#Linux常用命令" class="headerlink" title="Linux常用命令"></a>Linux常用命令</h2><h3 id="Shell"><a href="#Shell" class="headerlink" title="Shell"></a>Shell</h3><p>前言：启动某个程序:查找程序在硬盘上安装位置，然后将其加载到内存运行。真正能控制硬件(CPU,显示器,内存)的只有OS kernel。但由于安全,复杂等原因用户不能直接接触内核，则在user与kernel增加一层“代理”（UI与命令行程序）。来接收用户操作,简单处理后传给 kernel。</p>
+<ol>
+<li>Shell是一个命令行程序,连接user与Linux kernel，让user更高效用Linux kernel。运行一个命令，大部分情况下Shell都会调用内核暴露出来的接口。这就是在使用内核。</li>
+<li>Shell也支持编程。Shell也是一种脚本语言(Script),解释型语言的别称是脚本语言(Script)。</li>
+</ol>
+<h3 id="Linux版本"><a href="#Linux版本" class="headerlink" title="Linux版本"></a>Linux版本</h3><ol>
+<li>核心版本</li>
+<li>发行版本</li>
+</ol>
+<h3 id="Shell与Bash"><a href="#Shell与Bash" class="headerlink" title="Shell与Bash"></a>Shell与Bash</h3><ul>
+<li>Shell</li>
+</ul>
+<p>Shell 是用户与操作系统内核之间的接口，允许用户通过输入命令与系统交互。它可以是命令行界面（CLI）或图形用户界面（GUI），但通常指 CLI。Shell 接收用户输入的命令，解释并执行它们。</p>
+<ul>
+<li>Bash</li>
+</ul>
+<p>Bash（Bourne Again Shell）是 Shell 的一种，由 Brian Fox 为 GNU 项目开发。它基于 Bourne Shell（sh），增加了更多功能，如命令行编辑、命令历史、脚本编程等。Bash 是许多 Linux 发行版的默认 Shell。</p>
+<p>区别</p>
+<ul>
+<li>定义：</li>
+</ul>
+<p>Shell 是用户与操作系统交互的接口。</p>
+<p>Bash 是 Shell 的一种实现。</p>
+<ul>
+<li>功能：</li>
+</ul>
+<p>Shell 提供基本的命令解释和执行功能。</p>
+<p>Bash 在 Shell 的基础上增加了更多高级功能，如命令行编辑、命令历史等。</p>
+<ul>
+<li>兼容性：</li>
+</ul>
+<p>Shell 通常指 Bourne Shell（sh）。</p>
+<p>Bash 兼容 sh，并扩展了更多功能。</p>
+<ul>
+<li>使用场景：</li>
+</ul>
+<p>Shell 适用于基本的命令行操作。</p>
+<p>Bash 更适合复杂的脚本编写和交互式使用。</p>
+<h3 id="Shell命令与Bash命令"><a href="#Shell命令与Bash命令" class="headerlink" title="Shell命令与Bash命令"></a>Shell命令与Bash命令</h3><ol>
+<li>Shell 命令</li>
+</ol>
+<p>Shell 命令 是指通过 Shell（命令行解释器）执行的命令。</p>
+<p>Shell 是一个统称，包括多种不同的 Shell 实现，比如：</p>
+<figure class="highlight txt"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Bash（Bourne Again Shell）</span><br><span class="line"></span><br><span class="line">sh（Bourne Shell）</span><br><span class="line"></span><br><span class="line">zsh（Z Shell）</span><br><span class="line"></span><br><span class="line">csh（C Shell）</span><br><span class="line"></span><br><span class="line">fish（Friendly Interactive Shell）</span><br></pre></td></tr></table></figure>
+
+<p>无论你使用哪种 Shell，都可以执行一些基本的命令，比如 ls、cd、echo 等。这些命令是 Shell 通用的。</p>
+<ol start="2">
+<li>Bash 命令</li>
+</ol>
+<p>Bash 命令 是特指在 Bash Shell 中执行的命令。<br>Bash 是 Shell 的一种，因此 Bash 命令也是 Shell 命令的一部分。<br>Bash 支持一些额外的功能和语法，比如：</p>
+<ul>
+<li>命令行编辑（使用方向键修改命令）</li>
+<li>命令历史（通过 history 查看）</li>
+<li>更强大的脚本编程功能（如数组、条件判断、循环等）:例如，${VAR:-default} 这种语法是 Bash 特有的，其他 Shell 可能不支持。</li>
+</ul>
+<ol start="3">
+<li>为什么容易混淆？</li>
+</ol>
+<p>因为 Bash 是目前最常用的 Shell，很多人默认使用的就是 Bash，所以经常把“Shell 命令”和“Bash 命令”混为一谈。<br>如果你在 Linux 或 macOS 的终端中输入命令，大概率是在 Bash 中运行的，所以你会觉得“Shell 命令”和“Bash 命令”是一回事。</p>
+<ol start="4">
+<li>如何区分？</li>
+</ol>
+<p>如果你在写脚本或执行命令时，使用的是 Bash 特有的功能（比如 [[ ]] 条件判断、${VAR} 变量扩展等），那么这些就是 Bash 命令。<br>如果你使用的是非常基础的命令（比如 ls、cd、echo），这些是 Shell 命令，几乎所有的 Shell 都支持。</p>
+<ol start="5">
+<li>总结</li>
+</ol>
+<p>Shell 命令 是通用的，适用于所有 Shell。</p>
+<p>Bash 命令 是 Shell 命令的一部分，特指 Bash 支持的命令和语法。</p>
+<p>如果你不确定自己用的是哪种 Shell，可以运行以下命令查看：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$SHELL</span> <span class="comment">#如果显示 /bin/bash，说明你正在使用 Bash。</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Shell界面"><a href="#Shell界面" class="headerlink" title="Shell界面"></a>Shell界面</h3><p>Linux系统提供的命令需要在shell环境下运行，需要从图形界面进入shell界面，即<strong>终端（konsole）</strong></p>
+<h3 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h3><ul>
+<li>bash命令的一般格式：命令名+选项+参数</li>
+<li>正常执行后返回0，否则返回非零值（通过命令$?）查看</li>
+<li>一行放不下，用反斜杠\来中继</li>
+<li>连续的空格会被解释为单个空格</li>
+</ul>
+<h3 id="简单命令"><a href="#简单命令" class="headerlink" title="简单命令"></a>简单命令</h3><ol>
+<li>who命令：显示用户名+终端名+注册时间</li>
+<li>echo命令：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> i am chy</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> i    am     a      good     boy <span class="comment">#多个空格按一格</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&#x27;i    am     a      good     boy&#x27;</span></span></span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>date命令：显示日期</li>
+<li>cal命令：显示日历</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cal <span class="comment">#显示当前月份</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cal 10 <span class="comment">#显示公元10年的月份</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cal 2 2025 <span class="comment">#不言而喻</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cal Feb 2025 <span class="comment">#更洋气</span></span></span><br></pre></td></tr></table></figure>
+<ol start="5">
+<li>clear命令：清屏</li>
+<li>passwd命令：修改密码</li>
+</ol>
+<h3 id="文件系统"><a href="#文件系统" class="headerlink" title="文件系统"></a>文件系统</h3><ol>
+<li><code>.</code>是当前目录；<code>..</code>是当前目录的父目录；使用<code>cd</code>可以切换到家目录；最上层的目录称为根目录（root），用<code>/</code>表示。</li>
+<li>以<code>.</code>开头的是隐藏文件；以<code>-</code>开头的是普通文件；以<code>d</code>开头的是目录文件；以<code>l</code>开头的是符号链接文件。</li>
+<li>Linux的四种文件类型<ul>
+<li>普通文件</li>
+<li>目录文件</li>
+<li>设备文件（访问硬件的驱动程序(Linux 内核的一部分)的接口）</li>
+<li>符号链接文件</li>
+</ul>
+</li>
+</ol>
+<h3 id="文件操作命令"><a href="#文件操作命令" class="headerlink" title="文件操作命令"></a>文件操作命令</h3><h4 id="文件显示命令"><a href="#文件显示命令" class="headerlink" title="文件显示命令"></a>文件显示命令</h4><ol>
+<li>cat命令：显示文件、连接两个或多个文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> f1 <span class="comment">#显示f1内容</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> f1 f2 <span class="comment">#同时显示f1与f2内容</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> f1 f2 &gt; f3 <span class="comment">#把文件f1与f2中的内容合并放到f3中，如果 f3 原本有内容，执行该命令后会被完全替换，且无法恢复。使用&gt;&gt;追# 加，terminal不会显示任何事物</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/2025_2_26/001.png" alt="404"></p>
+<ol start="2">
+<li>more命令：每次显示一屏</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">more -dc f1 <span class="comment">#-d 显示友好信息    -c 先清屏</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">more -c -10 f1 <span class="comment">#每10行显示一次，显示前先清屏</span></span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>space：显示下一屏</li>
+<li>enter：显示下一行</li>
+<li>B：上一屏</li>
+<li>Q：退出</li>
+</ul>
+<ol start="3">
+<li>less命令：同more命令<br>增强处在于：</li>
+</ol>
+<ul>
+<li>使用<code>⬆</code>与<code>⬇</code>切换行</li>
+</ul>
+<ol start="4">
+<li>head命令：显示文件开头若干行（默认10）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">head</span> -5 f1 <span class="comment"># 显示5行</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="5">
+<li>tail命令：显示末尾若干行（默认10）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> +20 f1 <span class="comment"># 从文件20行显示到最后</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -c 10 f1 <span class="comment"># 显示f1最后10个字符</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">tail</span> -f f1 <span class="comment">#The -f flag makes tail keep the file open and continuously print new lines as they are appended.</span></span></span><br><span class="line"><span class="meta prompt_"> # </span><span class="language-bash">To <span class="built_in">exit</span>, press Ctrl+C</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>touch命令：修改指定文件时间标签或者创建一个空文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">touch</span> f1 <span class="comment"># 创建文件f1</span></span></span><br></pre></td></tr></table></figure>
+<p><img src="/img/2025_4_29/002.png" alt="404"></p>
+<h4 id="匹配、排序、显示指定内容的命令"><a href="#匹配、排序、显示指定内容的命令" class="headerlink" title="匹配、排序、显示指定内容的命令"></a>匹配、排序、显示指定内容的命令</h4><ol>
+<li>grep命令：查找指定的词或者短语</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">grep -F hello f1 <span class="comment"># 在f1中查找hello所在的‘行’。-F表明此时hello为单纯字符串</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">grep -r <span class="string">&#x27;print&#x27;</span> d1 <span class="comment"># 以递归方式查询目录d1子目录下的所有文件</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">grep -E <span class="string">&#x27;[Mm]i || [Yy]j&#x27;</span> f1 f2 <span class="comment"># 此时字符串为正则表达式 Expression</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">grep -i <span class="string">&#x27;main&#x27;</span> f1 <span class="comment"># 比较时不区分大小写</span></span> </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>sort命令：排序</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sort testfile </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">sort</span> 命令将以默认的方式将文本文件的第一列以 ASCII 码的次序排列，并将结果输出到标准输出。</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> testfile      <span class="comment"># testfile文件原有排序</span></span>  </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sort</span> testfile <span class="comment"># 重排结果</span></span>  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85  </span><br><span class="line">test 30 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sort</span> testfile -k 2</span></span><br><span class="line">test 30  </span><br><span class="line">Linux 85 </span><br><span class="line">Hello 95  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>uniq命令：去重</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">uniq testfile </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> testfile      <span class="comment">#原有内容</span></span>  </span><br><span class="line">test 30  </span><br><span class="line">test 30  </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Hello 95  </span><br><span class="line">Hello 95  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85  </span><br><span class="line">Linux 85 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">uniq</span> testfile     <span class="comment">#删除重复行后的内容</span></span>  </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">检查文件并删除文件中重复出现的行，并在行首显示该行重复出现的次数。使用如下命令：</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">uniq</span> -c testfile      <span class="comment">#删除重复行后的内容</span></span>  </span><br><span class="line">3 test 30             #前面的数字的意义为该行共出现了3次  </span><br><span class="line">4 Hello 95            #前面的数字的意义为该行共出现了4次  </span><br><span class="line">2 Linux 85            #前面的数字的意义为该行共出现了2次 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当重复的行并不相邻时，<span class="built_in">uniq</span> 命令是不起作用的，即若文件内容为以下时，<span class="built_in">uniq</span> 命令不起作用：</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cat</span> testfile1      <span class="comment"># 原有内容</span></span> </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line">test 30  </span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 方法</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sort</span>  testfile1 | <span class="built_in">uniq</span></span></span><br><span class="line">Hello 95  </span><br><span class="line">Linux 85 </span><br><span class="line">test 30</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="查找和比较文件的命令"><a href="#查找和比较文件的命令" class="headerlink" title="查找和比较文件的命令"></a>查找和比较文件的命令</h4><ol>
+<li>comm命令：比较两个已经排好序的文件（逐行比较）</li>
+</ol>
+<ul>
+<li><code>-123</code>表示<strong>不显示</strong>第一列（仅在f1中出现的行）、第二列（仅在f2中出现的行）、第三列（在f1与f2中出现的行）</li>
+</ul>
+<ol start="2">
+<li>diff命令：（不要求两个文件事先排好序）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost test3]# diff log2014.log log2013.log </span><br><span class="line">3c3 # 3 change 3 前者的第三行与后者的第三行</span><br><span class="line">&lt; 2014-03 # 前者</span><br><span class="line">---</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">2013-03 <span class="comment"># 后者</span></span></span><br><span class="line">8c8</span><br><span class="line">&lt; 2013-07</span><br><span class="line">---</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">2013-08</span></span><br><span class="line">11,12d10    # 11 12 delete 10 ，前者11 12行有下面这些东西。10 为前一个文件的11 12 行的内容在第二个文件的第10行后缺失# 了</span><br><span class="line">&lt; 2013-11</span><br><span class="line">&lt; 2013-12</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p><img src="/img/2025_4_29/003.png" alt="404"></p>
+<ol start="3">
+<li>cmp命令：（发现差异会标出差异的位置）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">cmp -b ex1 ex2</span></span><br><span class="line">ex1 ex2 differ:byte 1,line 1 is 144 d 43 #</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">意思是第一行第一字节不同，ex1上是e，编码144，ex2上是#</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>find：（在指定的目录下查找相应的文件）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">find . -name <span class="string">&quot;m*.c&quot;</span> <span class="comment">#在当前目录下查找以m开头.c结尾的文件。.表示当前目录。-name 选项用于根据文件名进行匹配。</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="复制、删除和移动文件的命令"><a href="#复制、删除和移动文件的命令" class="headerlink" title="复制、删除和移动文件的命令"></a>复制、删除和移动文件的命令</h4><ol>
+<li>cp命令：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> mfile /home/fox/exam1 <span class="comment"># 将mfile复制到/home/fox下，并改名为exam1</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> -r /home/fox /home/cat <span class="comment"># 将目录/home/fox下所有**文件及其子目录**复制到目录/home/cat中</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cp</span> -i /home/fox /home/cat <span class="comment"># i是交互式的，覆盖前会提示</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>rm命令：（删除）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -i <span class="built_in">test</span> example <span class="comment"># 交互式删除文件。test 和 example：这是要删除的两个文件名。</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -r * <span class="comment"># 递归地删除指定目录及其下属的各级子目录和相应的文件。</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -f filename  <span class="comment"># Force-delete a specific file</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">rm</span> -d empty_dir  <span class="comment"># Remove an empty directory</span></span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>if you accidentally press Enter after:<ul>
+<li>rm -f (with no filename): The command will wait for input from stdin</li>
+<li>rm -f * or rm -f &#x2F;: Would delete ALL files (catastrophic without backups)</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>mv命令：（对文件或者目录重命名，或者将文件从一个目录移动到另一目录中）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mv</span> ex1 new1 <span class="comment"># 改名字</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mv</span> /home/doc/* . <span class="comment"># 把/home/doc下的所有文件移到当前目录</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文件内容统计命令"><a href="#文件内容统计命令" class="headerlink" title="文件内容统计命令"></a>文件内容统计命令</h4><ol>
+<li>wc命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">wc</span> -clw f1 f2 <span class="comment"># -c:字节数 -l:行数 -w:字数</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">wc</span> f1 <span class="comment">#同上</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="目录及其操作命令"><a href="#目录及其操作命令" class="headerlink" title="目录及其操作命令"></a>目录及其操作命令</h3><h4 id="各种目录"><a href="#各种目录" class="headerlink" title="各种目录"></a>各种目录</h4><p><img src="/img/2025_4_29/004.png" alt="404"><br><img src="/img/2025_4_29/005.png" alt="404"><br><img src="/img/2025_4_29/006.png" alt="404"></p>
+<h4 id="绝对路径与相对路径"><a href="#绝对路径与相对路径" class="headerlink" title="绝对路径与相对路径"></a>绝对路径与相对路径</h4><ol>
+<li>显示绝对路径</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">pwd</span></span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>相对路径<br>相对路径不唯一</li>
+</ol>
+<h4 id="创建和删除目录"><a href="#创建和删除目录" class="headerlink" title="创建和删除目录"></a>创建和删除目录</h4><ol>
+<li>mkdir命令：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> f1.txt <span class="comment"># 在当前目录下创建f1.txt</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> -m 700 f1.txt <span class="comment"># Creates a directory named test under /home/helena/ with permissions set to 700.</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Owner (7): rwx (Read + Write + Execute)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Group (0): --- (No permissions)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Others (0): --- (No permissions)</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Fails <span class="keyword">if</span> /home/helena/ doesn’t exist (no parent directory auto-creation).</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">mkdir</span> –pm 750 bin/os_</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Parent directories (e.g., bin/) are created with default permissions (usually 755).</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Only the target directory (os_) gets the specified 750 permissions.</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>rmdir命令：<br>注意：不能在子目录下删除父目录，或者在当前目录下删除当前目录。且被删目录应为空目录。</li>
+</ol>
+<ul>
+<li>-p：递归删除目录dirname，当子目录删除后其父目录为空时，也一同被删除。如果有非空的目录，则该目录保留下来</li>
+<li>Command to Delete Non-Empty Directories</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rm -rf /path/to/dirname # R means Recursively </span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>关于<code>rm -rf *</code></li>
+</ol>
+<p>The command rm -rf * is a powerful and dangerous Linux&#x2F;Unix command that recursively deletes all files and directories in the current working directory. </p>
+<h4 id="改变工作目录和显示目录内容"><a href="#改变工作目录和显示目录内容" class="headerlink" title="改变工作目录和显示目录内容"></a>改变工作目录和显示目录内容</h4><ol>
+<li>cd命令：</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> .. <span class="comment"># 向上移动一级</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> ../.. <span class="comment"># 向上移动两级 。注意这两个文件的空格</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> <span class="comment"># 切换到家目录</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> home/chen <span class="comment">#切换到home/chen</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>ls命令：（列出指定目录内容）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -F <span class="comment"># 列出当前目录内容，并标出文件属性</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">/，表示目录；*，表示可执行文件；@，表示符号链接文件；|，表示管道文件；=，表示socket文件</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -C <span class="comment"># 以多列形式列出目录的内容（实际上跟不加C一样）</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -lai <span class="comment">#长格式、所有文件（显示隐藏文件）、显示I节点号（每个文件或目录都有一个唯一的 inode 号，用于标识文件。</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Inode 号类似于文件的“身份证号”。）</span></span><br></pre></td></tr></table></figure>
+<h4 id="链接文件的命令"><a href="#链接文件的命令" class="headerlink" title="链接文件的命令"></a>链接文件的命令</h4><ol>
+<li><p>硬链接<br>创建的链接与原来的文件Inode号不变。</p>
+</li>
+<li><p>软链接<br>创建的链接与原来的文件Inode号发生改变。</p>
+</li>
+<li><p>区别</p>
+</li>
+</ol>
+<p>符号链接（软）确实是一个新文件，它有不同的I节点号；而硬链接并没有建立新文件。<br><img src="/img/2025_4_29/007.png" alt="404"></p>
+<ul>
+<li>为什么硬链接不能跨文件系统？软链接为什么可以？</li>
+</ul>
+<p>硬链接直接指向文件的 inode（磁盘上的物理地址），而不同文件系统的 inode 编号是独立管理的，无法互相识别。<br>软链接存储的是目标文件的路径字符串（如 &#x2F;mnt&#x2F;usb&#x2F;file.txt），不依赖 inode，因此可以跨设备。</p>
+<ul>
+<li>为什么不允许目录硬链接？软链接可以用于目录？</li>
+</ul>
+<p>硬链接当工具（如 find、rm -r）遍历目录时，会进入无限循环：docs&#x2F; → backup&#x2F; → docs&#x2F; → backup&#x2F; → …<br>软链接是独立的文件，存储的是目标路径的字符串，不共享 inode。系统解析软链接时，会跳转到目标路径，不会造成循环引用。</p>
+<ol>
+<li>ln命令：（用来创建链接）</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ln</span> a1.txt a1.txt.link <span class="comment"># -F为硬链接，默认为硬链接</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ln</span> -s a2.txt a2.txt.link <span class="comment"># -s为软链接</span></span> </span><br></pre></td></tr></table></figure>
+<h4 id="改变文件或者目录存取权限的命令"><a href="#改变文件或者目录存取权限的命令" class="headerlink" title="改变文件或者目录存取权限的命令"></a>改变文件或者目录存取权限的命令</h4><p>Linux中有四种用户：1-当前用户(user)；2-当前用户的用户组(group)；3-其他用户(others)；4-超级管理员(root)。其次<code>all</code>代表所有用户<br>Linux中有三种权限：r-读；w-写；e-执行</p>
+<ol>
+<li>chmod命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">chmod</span> a+x ex1 <span class="comment"># 将文件ex1改为所有用户都有可执行权限</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">chmod</span> u=rx,g=x,o= ex1 <span class="comment"># 其他用户无权访问</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">chmod</span> 0664 ex1 <span class="comment"># 代表 0 111 111 100 -rwx-rwx-r--</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>unmask命令：（设置新建文件的掩码，默认0022）</li>
+</ol>
+<ul>
+<li>新建文件的原始权限为：0666</li>
+<li>新建目录的原始权限为：0777</li>
+</ul>
+<ol>
+<li>若设置掩码为：0022。则上述变为0666-0022&#x3D;0644；0777-0022&#x3D;0755</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">设置掩码默认值</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">umask</span></span></span><br><span class="line">0022</span><br></pre></td></tr></table></figure>
+<h4 id="改变用户组和文件主的命令"><a href="#改变用户组和文件主的命令" class="headerlink" title="改变用户组和文件主的命令"></a>改变用户组和文件主的命令</h4><ol>
+<li>chgrp</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-R：递归式，将/home/wc下的文件及其子文件的用户**组**改为chenshi</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">chgrp</span> -R chenshi /home/wc</span> </span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>chown<br>同上，不过是改变用户</li>
+</ol>
+<h4 id="联机帮助命令"><a href="#联机帮助命令" class="headerlink" title="联机帮助命令"></a>联机帮助命令</h4><ol>
+<li>man</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">看<span class="built_in">date</span>命令的用法</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">man <span class="built_in">date</span></span></span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>help</li>
+</ol>
+<h4 id="有关进程的命令"><a href="#有关进程的命令" class="headerlink" title="有关进程的命令"></a>有关进程的命令</h4><ol>
+<li>ps</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ps</span></span><br><span class="line"></span><br><span class="line">PID TTY          TIME CMD</span><br><span class="line">2140 pts/0    00:00:00 bash</span><br><span class="line">2159 pts/0    00:00:00 ps</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">PID：进程ID号</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">TTY：该进程建立时对应的终端（pts/0、pts/1、pts/2······）</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">TIME：占用CPU的时间，有些命令虽然运行了很长时间，但真正使用CPU的时间往往很短</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">CMD：执行进程的命令名。</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>nice：修改进程优先级</li>
+<li>kill：杀死进程</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">kill</span> 1999 <span class="comment"># 1999为PID号码</span></span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>sleep：暂停进程</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">sleep</span> 100 <span class="comment"># 暂停100秒</span></span></span><br></pre></td></tr></table></figure>
+
+<h4 id="文件的压缩与解压缩"><a href="#文件的压缩与解压缩" class="headerlink" title="文件的压缩与解压缩"></a>文件的压缩与解压缩</h4><ol>
+<li>gzip：压缩文件（默认）&#x2F;解压缩文件</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">cd</span> /home/chen</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gzip *    <span class="comment"># 将当前所有文件压缩</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gzip -dv *    <span class="comment"># -d解压缩；-v显示详细信息</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gzip -l   <span class="comment"># 列出每个压缩文件的信息，但不执行解压缩</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gzip -v --fast *  <span class="comment"># -v显示压缩比；--fast实现快速解压</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>unzip：对<code>.zip</code>文件解压缩</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">unzip hong.zip</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">unzip -v hong.zip     <span class="comment"># 显示有关压缩文件的信息，但不解压缩</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="3">
+<li>tar：归档</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar -cvf</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar –cvf test.tar <span class="built_in">test</span> <span class="comment"># 生成.tar文件</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-c：创建（Create）新的归档文件。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-v：显示详细过程（Verbose）。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-f：指定归档文件名（File）。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar -xvf</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar –xvf test.tar <span class="comment"># 将 test.tar 中的内容释放到当前目录。</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-x：解包（Extract）。</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">-v：显示详细过程。</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-f：指定要解包的归档文件。</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar -cvzf</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">tar –cvzf test.tar.gz <span class="built_in">test</span> <span class="comment"># 将 test 文件/目录打包并 用gzip压缩，生成 .tar.gz 文件。</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">-z：使用gzip压缩（Zip）</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">生成压缩后的 test.tar.gz，体积比 .tar 更小。</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="文本编辑"><a href="#文本编辑" class="headerlink" title="文本编辑"></a>文本编辑</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><ol>
+<li>vi是文本编辑器；vim是vi improved</li>
+<li>在UNIX&#x2F;Linux系统中都存在vi</li>
+<li>Linux中输入<code>vi</code>其实就是启动了<code>vim</code></li>
+</ol>
+<h3 id="vi的三种工作方式"><a href="#vi的三种工作方式" class="headerlink" title="vi的三种工作方式"></a>vi的三种工作方式</h3><h4 id="命令方式"><a href="#命令方式" class="headerlink" title="命令方式"></a>命令方式</h4><p>进入vi编辑器后，输入命令</p>
+<ol>
+<li>a(append)：附加命令</li>
+<li>i(insert)：插入命令</li>
+</ol>
+<p>输入这些命令既由<em>命令方式</em>-&gt;<em>输入方式</em></p>
+<h4 id="输入方式"><a href="#输入方式" class="headerlink" title="输入方式"></a>输入方式</h4><p>按下输入的键来输入</p>
+<p>按下esc由<em>输入方式</em>-&gt;<em>命令方式</em></p>
+<h4 id="ex转义方式"><a href="#ex转义方式" class="headerlink" title="ex转义方式"></a>ex转义方式</h4><p><code>:</code>作为ex命令提示符，后跟命令，按下delete终止执行</p>
+<h3 id="进入与退出vi"><a href="#进入与退出vi" class="headerlink" title="进入与退出vi"></a>进入与退出vi</h3><h4 id="进入vi"><a href="#进入vi" class="headerlink" title="进入vi"></a>进入vi</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">vi example.c</span></span><br></pre></td></tr></table></figure>
+<h4 id="退出vi"><a href="#退出vi" class="headerlink" title="退出vi"></a>退出vi</h4><ol>
+<li><code>:wq</code>：保存并退出</li>
+<li><code>:ZZ</code>：当有改动时，才写入</li>
+<li><code>X</code>：同2</li>
+<li><code>:q!</code>：强制退出</li>
+</ol>
+<h3 id="命令模式下的命令"><a href="#命令模式下的命令" class="headerlink" title="命令模式下的命令"></a>命令模式下的命令</h3><h4 id="插入命令"><a href="#插入命令" class="headerlink" title="插入命令"></a>插入命令</h4><ol>
+<li><code>i</code>命令：光标在哪，就在光标处的前一位置插入</li>
+<li><code>I</code>命令：光标在哪<strong>行</strong>，就在行首插入</li>
+</ol>
+<h4 id="附加命令"><a href="#附加命令" class="headerlink" title="附加命令"></a>附加命令</h4><ol>
+<li><code>a</code>命令：光标在哪，就在光标处的后一位置插入</li>
+<li><code>A</code>命令：光标在哪<strong>行</strong>，就在行尾插入</li>
+</ol>
+<h4 id="打开命令（开辟新行）"><a href="#打开命令（开辟新行）" class="headerlink" title="打开命令（开辟新行）"></a>打开命令（开辟新行）</h4><ol>
+<li><code>o</code>：在当前行的下面新开一行</li>
+<li><code>O</code>：在当前行的上面新开一行</li>
+</ol>
+<h4 id="移动光标的其他命令"><a href="#移动光标的其他命令" class="headerlink" title="移动光标的其他命令"></a>移动光标的其他命令</h4><p><img src="/img/2025_4_29/008.png" alt="404"></p>
+<p>gg到第一行<br>G到最后一行<br>nG到第n行</p>
+<h4 id="命令模式下移动光标"><a href="#命令模式下移动光标" class="headerlink" title="命令模式下移动光标"></a>命令模式下移动光标</h4><ol>
+<li><p><code>l</code>;<code>Space</code>;<code>→</code>：向右移动。<br><code>3+l</code>  &#x3D;&#x3D;  <code>3+Space</code></p>
+</li>
+<li><p><code>h</code>;<code>BackSpace</code>;<code>←</code>：向左移动</p>
+</li>
+<li><p><code>k</code>;<code>↑</code>：向上移动</p>
+</li>
+<li><p><code>enter</code>;<code>↓</code>;<code>j</code>：向下移动</p>
+</li>
+</ol>
+<h4 id="命令模式下文本修改"><a href="#命令模式下文本修改" class="headerlink" title="命令模式下文本修改"></a>命令模式下文本修改</h4><ol>
+<li><p><code>x</code>;<code>X</code>：前者向左删除；后者向右删除<br>用法：3x</p>
+</li>
+<li><p><code>dd</code>：删除整行</p>
+</li>
+</ol>
+<h3 id="输入模式"><a href="#输入模式" class="headerlink" title="输入模式"></a>输入模式</h3><h4 id="光标的移动"><a href="#光标的移动" class="headerlink" title="光标的移动"></a>光标的移动</h4><ol>
+<li><p>方向键：移动光标<br>注意：</p>
+<blockquote>
+<p>关于Linux下shell界面按上下左右方向键出现ABD的问题<br>这个问题有两种可能，一种是由于当前用户使用的shell是&#x2F;bin&#x2F;sh的原因。在添加用户的时候没有添加用户的指定shell类型，因此默认<br>为&#x2F;bin&#x2F;sh。<br>可以用shell类型命令：echo $SHELL 查看当前用户的shell类型，如果是&#x2F;bin&#x2F;sh，使用：chsh -s &#x2F;bin&#x2F;bash username或者使用<br>usermod -s &#x2F;bin&#x2F;bash username命令修改shell类型。<br>另一种是当前用户的shell类型是&#x2F;bin&#x2F;bash但是还是会有这个问题，这时可以在终端输入：export TERM&#x3D;linux。<br>这个是因为ubuntu的版本的TERM的问题。</p>
+</blockquote>
+</li>
+<li><p>BackSpace：回退到某一位置开始重做</p>
+</li>
+</ol>
+<h4 id="输入文本"><a href="#输入文本" class="headerlink" title="输入文本"></a>输入文本</h4><p>即输入你想输入的文本</p>
+<h3 id="ex转义模式"><a href="#ex转义模式" class="headerlink" title="ex转义模式"></a>ex转义模式</h3><ol>
+<li>常用命令</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:20   <span class="comment"># 移动到第20行</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:/this    <span class="comment">#  从当前行向后查找this</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:?thils   <span class="comment"># 向前</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">: 15 , 100 d  <span class="comment"># 删除15-100行</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">: . , +5d     <span class="comment">#删除当前行和他后面的5行</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">g/s1/p    <span class="comment"># 打印全文中含有s1的行</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:%s / I / i / g <span class="comment"># s-&gt;substitute 将I换为i 且是global替换</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:<span class="built_in">set</span> nu <span class="comment"># 设置行号</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:<span class="built_in">set</span> nonu <span class="comment"># 取消行号</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">:n <span class="comment"># 到第n行</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Linux-Shell程序设计"><a href="#Linux-Shell程序设计" class="headerlink" title="Linux Shell程序设计"></a>Linux Shell程序设计</h2><p>之前写的大多数命令，shell都作为<strong>命令解释程序</strong>出现，下面将介绍<strong>Shell程序设计语言</strong>（默认为Bash）。</p>
+<h3 id="Shell脚本的概述、建立与执行"><a href="#Shell脚本的概述、建立与执行" class="headerlink" title="Shell脚本的概述、建立与执行"></a>Shell脚本的概述、建立与执行</h3><h4 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h4><p>在第一行写上<code>#!/bin/bash</code>表明下面的脚本是用Bash编写的</p>
+<h4 id="建立"><a href="#建立" class="headerlink" title="建立"></a>建立</h4><p>使用vi编辑器</p>
+<h4 id="三种执行方式"><a href="#三种执行方式" class="headerlink" title="三种执行方式"></a>三种执行方式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">1</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">bash &lt; ScriptName</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">2</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">bash ScriptName para1 para2 ···</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">3-将shell脚本的权限设置为可执行，然后在提示符下直接执行它</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">./criptName</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="显示与执行历史命令"><a href="#显示与执行历史命令" class="headerlink" title="显示与执行历史命令"></a>显示与执行历史命令</h3><h4 id="显示"><a href="#显示" class="headerlink" title="显示"></a>显示</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">history</span></span></span><br><span class="line">81 pwd</span><br><span class="line">82 history</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">历史事件号越大，表明越是最近执行的命令</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">显示10条</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">history</span> 10</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><p><img src="/img/2025_3_11/001.png" alt="404"></p>
+<h4 id="配置历史命令环境"><a href="#配置历史命令环境" class="headerlink" title="配置历史命令环境"></a>配置历史命令环境</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chen12@ubuntu:~$ echo $HISTFILE</span><br><span class="line">/home/chen12/.bash_history</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解释：$+HISTFILE：是显示其值</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="variable">$HISTSIZE</span> = 600</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">解释：设置可存储600条命令</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="名称补全"><a href="#名称补全" class="headerlink" title="名称补全"></a>名称补全</h3><p>名称补全可以补全命令与参数，但不能补全选项</p>
+<h3 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h3><p>别名用于简化输入</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">别名的定义</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">alias</span> ..=<span class="string">&#x27;cd ..&#x27;</span>  <span class="comment"># 注意等号间不能有空格，注意用&#x27;&#x27;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">举例</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">alias</span> ll=<span class="string">&#x27;ls -l&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">my = /home/bc     <span class="comment"># 定义变量my，并赋值</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ll <span class="variable">$my</span>        <span class="comment"># my表示引用变量值      # 注意：换名是在读脚本时完成的，而非运行脚本时完成的</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">取消别名</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">unalias</span> ll  <span class="comment"># 删除别名为ll的记录</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">unalias</span> -a    <span class="comment"># 删除所有别名</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="特殊字符"><a href="#特殊字符" class="headerlink" title="特殊字符"></a>特殊字符</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">通配符</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">* 匹配任意字符的0次、1次、多次出现</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">? 匹配任意一个字符</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">[字符组]  匹配该字符组限定的任意一个字符,!（惊叹号），**注意**如果它紧跟在一对方括号的左方括号（[）之后，则表示不在一对方括号中# 所列出</span></span><br><span class="line">的字符f[!1-9].c表示以f开头，后面一个字符不是数字1-9的.c文件名。</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">! 非</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">*()，匹配括号内字符的0次、1次、多次出现</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">+()，匹配括号内字符的1次、多次出现</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">?()，匹配括号内字符的0次、1次出现</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">@()，匹配括号内字符的1次</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">!()，非</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 注意各模式之间用|分隔开</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ll file.*(.c|.o)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="引号"><a href="#引号" class="headerlink" title="引号"></a>引号</h3><ul>
+<li>由<code>&quot;&quot;</code>即双引号括起来的内容均当作普通字符对待。但是<code>$    \   倒引号</code>除外，<code>$</code>表示变量替换；<code>\</code>表示转义字符，后面可以跟<code>$ \ &quot; 倒引号</code>，表示后面这个字符不作特殊处理；<code>倒引号</code>表示命令替换 。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">ehco <span class="string">&quot;current time is `data`&quot;</span></span></span><br><span class="line">current time is  2025年 03月 18日 星期二 20:32:43 PDT</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">home=$(<span class="built_in">pwd</span>)   <span class="comment"># 等号两边不能有空格，这是shell变量赋值的要求</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;home dic is <span class="variable">$home</span>&quot;</span></span></span><br><span class="line">home dic is /home/chen12</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;file*.()&quot;</span></span></span><br><span class="line">file*.()</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;current &#x27;<span class="variable">$home</span>&#x27;&quot;</span></span></span><br><span class="line">current &#x27;/home/chen12&#x27;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>单引号。由单引号括起来的字符均作为普通字符（包括转义字符）出现。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">str=<span class="string">&#x27;echo &quot;directory is $home&quot;&#x27;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$str</span></span></span><br><span class="line">echo &quot;directory is $home&quot;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">echo</span>与<span class="variable">$home</span>，都失去了原有的意义</span></span><br><span class="line"></span><br><span class="line">chen12@ubuntu:~$ echo &#x27;The time is &#x27;data&#x27;,the file is $home/abc&#x27;</span><br><span class="line">The time is data,the file is $home/abc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>倒引号。被shell解释为命令行，在执行时，会先执行命令行</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">chen12@ubuntu:~$ echo current dir is `pwd`</span><br><span class="line">current dir is /home/chen12</span><br><span class="line"></span><br><span class="line">chen12@ubuntu:~$ today=`date`</span><br><span class="line">chen12@ubuntu:~$ echo today is $today</span><br><span class="line">today is 2025年 03月 21日 星期五 03:03:07 PDT</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 注意嵌套使用时需要使用转义符进行转义</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">转义字符可用作续行符</span></span><br><span class="line">chen12@ubuntu:~$ 42423424\</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">2342\</span></span><br><span class="line"><span class="language-bash">&gt; 2325555</span></span><br><span class="line">4242342423422325555: command not found</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="输入、输出重定向符"><a href="#输入、输出重定向符" class="headerlink" title="输入、输出重定向符"></a>输入、输出重定向符</h3><p>执行一个shell命令时，通常会自动打开三个标准文件：标准输入文件、标准输出文件、标准出错输出文件。<br><img src="/img/2025_3_21/001.png" alt="404"></p>
+<h4 id="输入重定向符"><a href="#输入重定向符" class="headerlink" title="输入重定向符"></a>输入重定向符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">score &lt; file1</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">score是一个可执行程序，用C语言编写</span></span><br><span class="line"></span><br><span class="line">chen12@ubuntu:~$ vi a1.sh</span><br><span class="line">echo hhh</span><br><span class="line">echo ddd</span><br><span class="line">echo sss</span><br><span class="line">echo aaaaaa</span><br><span class="line"></span><br><span class="line">chen12@ubuntu:~$ bash &lt; a1.sh</span><br><span class="line">hhh</span><br><span class="line">ddd</span><br><span class="line">sss</span><br><span class="line">aaaaaa</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">wc</span> &lt; a1.sh</span></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出重定向"><a href="#输出重定向" class="headerlink" title="输出重定向"></a>输出重定向</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">将指定文件的输出定向到某个文件中（原来的文件会被清楚，这是“覆盖式”写入）</span></span><br><span class="line">chen12@ubuntu:~$ who &gt; a1.sh</span><br><span class="line">chen12@ubuntu:~$ cat a1.sh</span><br><span class="line">chen12   :0           2025-03-21 02:55 (:0)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h4 id="输出附加定向符"><a href="#输出附加定向符" class="headerlink" title="输出附加定向符"></a>输出附加定向符</h4><p><code>&gt;&gt;</code>，原有内容不被破坏</p>
+<h4 id="复用输入与输出重定向"><a href="#复用输入与输出重定向" class="headerlink" title="复用输入与输出重定向"></a>复用输入与输出重定向</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">wc</span> -l &lt; infile &gt; outfile</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">统计输入的行数,将文件 infile 的内容作为 <span class="built_in">wc</span> 的输入,将 <span class="built_in">wc</span> 的输出结果写入文件 outfile</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="即时文件定向符"><a href="#即时文件定向符" class="headerlink" title="即时文件定向符"></a>即时文件定向符</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">chen12@ubuntu:~$ grep &quot;hello&quot; &lt;&lt; eof</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">hello</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">rr</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">hello</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">tthello</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">eof</span></span><br><span class="line">hello</span><br><span class="line">hello</span><br><span class="line">tthello</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">即以<span class="string">&#x27;eof&#x27;</span>开头，以<span class="string">&#x27;eof&#x27;</span>结尾</span></span><br></pre></td></tr></table></figure>
+
+<p>使用即时文件定向符的好处：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">chen12@ubuntu:~$ sort</span><br><span class="line">a</span><br><span class="line">q</span><br><span class="line">w</span><br><span class="line">e</span><br><span class="line">a</span><br><span class="line">e</span><br><span class="line">q</span><br><span class="line">w</span><br><span class="line">chen12@ubuntu:~$ sort &lt;&lt; uu</span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">aa</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">ab</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">ac</span></span><br><span class="line"><span class="meta prompt_">&gt; </span><span class="language-bash">uu</span></span><br><span class="line">aa</span><br><span class="line">ab</span><br><span class="line">ac</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>可以看到：放入即时文件比<strong>便输入数据、边处理</strong>方便。</p>
+<h4 id="与文件描述字有关的重定向"><a href="#与文件描述字有关的重定向" class="headerlink" title="与文件描述字有关的重定向"></a>与文件描述字有关的重定向</h4><p>标准输入、标准输出、标准错误输出的文件描述字分别为0、1、2</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gcc m1.c 2&gt; errfile</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">把编译过程中产生的错误信息输出到errfile中</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">注意：2与&gt;之间不能有Space</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">command</span> $&gt;file</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">等价于</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">command</span> &gt; file 2&gt;&amp; 1</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">实现把标准输出和标准错误输出到同一个文件中</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>command &gt; file 2&gt;&amp; 1</code>的实现逻辑<br>  <img src="/img/2025_4_29/009.png" alt="404"></li>
+</ul>
+<h3 id="注释、管道线、后台命令"><a href="#注释、管道线、后台命令" class="headerlink" title="注释、管道线、后台命令"></a>注释、管道线、后台命令</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">!/bin/bash</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="comment">#!后面的为绝对路径名</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> -l <span class="variable">$HOME</span> | <span class="built_in">wc</span> -l</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">ls</span> | grep m?.c | <span class="built_in">wc</span> -l</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">wc</span> -l 统计文件行数，即文件数目</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gcc m1.c&amp;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">&amp;使之成为后台命令，仅当CPU空闲时运行后台命令</span></span><br></pre></td></tr></table></figure>
+
+<p>关于<code>ls -l 与 ll</code>在ubantu上意义不同的说明：<br><img src="/img/2025_4_1/001.png" alt="404"></p>
+<h3 id="命令操作符"><a href="#命令操作符" class="headerlink" title="命令操作符"></a>命令操作符</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pwd ; who ; cd /da/shd ; date</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">前面的命令执行成功与否，不影响后面程序的运行</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">逻辑与&amp;&amp;</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">逻辑或||</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">gcc m1.c &amp;&amp; <span class="built_in">echo</span> <span class="built_in">yes</span> || <span class="built_in">echo</span> no <span class="comment"># 作为命令是否执行成功的判断标志</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="Shell变量"><a href="#Shell变量" class="headerlink" title="Shell变量"></a>Shell变量</h3><ol>
+<li>shell有两类变量：环境变量（永久），用户自定义变量（暂时，仅限于定义它的程序）</li>
+</ol>
+<h4 id="用户自定义的变量"><a href="#用户自定义的变量" class="headerlink" title="用户自定义的变量"></a>用户自定义的变量</h4><ol>
+<li>变量名</li>
+</ol>
+<p>区分大小写</p>
+<ol start="2">
+<li>变量赋值</li>
+</ol>
+<p><code>变量名=字符串</code>，注意等号两端没有空格，更改变量即重新赋值</p>
+<ol start="3">
+<li>引用变量值</li>
+</ol>
+<p>在变量的前面加上<code>$</code>,不加会被认为是普通字符串。不赋值或者赋空值，会显示为空字符串。<br>如果含有空格之类的，需要加上双引号，否则就只识别第一个</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">s=ing</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> l like <span class="built_in">read</span><span class="variable">$s</span></span></span><br><span class="line">i like reading</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">变量的值可以作为长字符串的一部分</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">为了避免混淆，也可以</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> l like <span class="built_in">read</span><span class="variable">$&#123;s&#125;</span></span></span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>命令替换</li>
+</ol>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">有两种形式可将命令的执行结果赋给变量</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">dir</span>=`<span class="built_in">pwd</span>`</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">dir</span>=$(<span class="built_in">pwd</span>)</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h3><p>bash提供一维数组</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">declare</span> -a arrar_name     <span class="comment"># 数组的声明</span></span> </span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">arrar_name=(var1 var2 ...)        <span class="comment"># 或者：声明+整体赋值</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">array_name[0] = var1      <span class="comment"># 个体赋值</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$&#123;arrar_name[0]&#125;</span>     <span class="comment"># 个体输出</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$&#123;arrar_name[8]&#125;</span>      <span class="comment"># 若此项未定义，则输出空串</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$&#123;arrar_name[*]&#125;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$&#123;arrar_name[@]&#125;</span>     <span class="comment"># 这样会输出所有元素</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">unset</span> array_name[0]       <span class="comment"># 取消第0个元素的定义</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="输入、输出命令"><a href="#输入、输出命令" class="headerlink" title="输入、输出命令"></a>输入、输出命令</h3><ol>
+<li>read命令</li>
+</ol>
+<p>read命令从键盘上读取数据，然后赋值给指定变量</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">read</span> a b c</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">输入数据时，以空格或制表符为分隔符。如果输入的数据多，都算到最后一个变量上。输入数据少，则最后几个变量为空值</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">read</span> -p <span class="string">&quot;enter var&quot;</span> a</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">增加提示信息，p与后面的提示词必有</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>echo命令</li>
+</ol>
+<p>若echo命令带有参数e，则其后面的参数可有<strong>转义字符</strong></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> -e <span class="string">&quot;enter the file name-&gt;\c&quot;</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">\c 作用是光标不换行</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> -n ok</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">不换行打印ok</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="位置参数"><a href="#位置参数" class="headerlink" title="位置参数"></a>位置参数</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">set</span> `<span class="built_in">pwd</span>;<span class="built_in">ls</span>;<span class="built_in">date</span>`</span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">set</span>是设置位置参数的值</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$1</span> <span class="variable">$3</span> <span class="variable">$&#123;10&#125;</span> <span class="variable">$&#123;12&#125;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">shift</span>     <span class="comment"># shift移动位置参数，2变成1，3变成2等</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">shift</span> 4 <span class="comment">#相当于4个shift</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="算术运算"><a href="#算术运算" class="headerlink" title="算术运算"></a>算术运算</h3><h4 id="let"><a href="#let" class="headerlink" title="let"></a>let</h4><p><code>let &quot;j=i*6+2&quot;</code>等价于<code>((j=i*6+2))</code></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">当命令中有特殊字符时，用双引号</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">let</span> <span class="string">&quot;v=6|5&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$v</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">((v=<span class="number">6</span>|<span class="number">5</span>))</span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="variable">$v</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;((12*9))&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="string">&quot;((12*9))&quot;</span></span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">echo</span> <span class="string">&quot;<span class="subst">$((12*9)</span>)&quot;</span></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">108</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="流程控制语句"><a href="#流程控制语句" class="headerlink" title="流程控制语句"></a>流程控制语句</h3><h4 id="if语句"><a href="#if语句" class="headerlink" title="if语句"></a>if语句</h4><p>if-then-else-fi，一个if对应一个fi</p>
+<h4 id="条件测试"><a href="#条件测试" class="headerlink" title="条件测试"></a>条件测试</h4><ol>
+<li>使用test命令</li>
+</ol>
+<p><code>if test -f &quot;$1&quot;</code></p>
+<ol start="2">
+<li>用[]</li>
+</ol>
+<p><code>[ -f &quot;$1&quot; ]</code>注意中括号前后各有一个空格</p>
+<ol start="3">
+<li>用[[]]</li>
+</ol>
+<p>同理，最好用<strong>双中括号</strong></p>
+<ol start="4">
+<li>常用的文件测试符号形式与功能</li>
+</ol>
+<p>-e:文件存在与否<br>-f:文件存在且是普通文件<br>-d:文件存在且是目录文件</p>
+<ol start="5">
+<li>字符串测试运算符形式与功能</li>
+</ol>
+<p>s1 &#x3D; s2:两字符串相等，注意等号左右的空格<br>s1 !&#x3D; s2:两字符串不等<br>s1 &lt; s2:字典顺序</p>
+<ol start="6">
+<li>数值测试运算符形式与功能</li>
+</ol>
+<p>-eq<br>-ne<br>-lt<br>-le<br>-gt<br>-ge</p>
+<p>!:非<br>-a:与<br>-o:或<br>():括号前加\使括号失去了意义</p>
+<ol start="7">
+<li>番外</li>
+</ol>
+<p><code>command1 &amp;&amp; echo &quot;success&quot; || echo &quot;no&quot;</code>可判断命令1是否执行成功</p>
+<h4 id="case语句"><a href="#case语句" class="headerlink" title="case语句"></a>case语句</h4><p><img src="/img/2025_4_12/001.png" alt="404"></p>
+<p><code>*)</code>为default<br><code>dir|path)</code>为或</p>
+<h4 id="while语句"><a href="#while语句" class="headerlink" title="while语句"></a>while语句</h4><p><img src="/img/2025_4_12/002.png" alt="404"></p>
+<h4 id="until语句"><a href="#until语句" class="headerlink" title="until语句"></a>until语句</h4><p>与while语句相反</p>
+<h4 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h4><ol>
+<li>值表方式</li>
+</ol>
+<p><code>for day in Monday Friday</code></p>
+<ol start="2">
+<li>算术表达式</li>
+</ol>
+<p><code>for ((i=1;i&lt;=$1;i++))</code></p>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h4><p>break;<br>continue;<br>exit;<br>select;</p>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[function]function_name()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">其中<span class="keyword">function</span>可省略</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="一些简单命令"><a href="#一些简单命令" class="headerlink" title="一些简单命令"></a>一些简单命令</h4><p>jobs：列出当前未完成的作业</p>
+<p>kill：向进程发送指定信号</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">$ </span><span class="language-bash"><span class="built_in">kill</span> -9 1893</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">立刻终止PID为1893的进程</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">$ </span><span class="language-bash">kikk -15 1893</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">让其正常终止</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="两种遍历方式"><a href="#两种遍历方式" class="headerlink" title="两种遍历方式"></a>两种遍历方式</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">脚本 test.sh</span></span><br><span class="line">for arg in &quot;$*&quot;; do</span><br><span class="line">    echo &quot;Argument: $arg&quot;</span><br><span class="line">done</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash"><span class="built_in">shift</span></span></span><br><span class="line">shift times</span><br></pre></td></tr></table></figure>
+
+<h2 id="gcc—C语言编译系统"><a href="#gcc—C语言编译系统" class="headerlink" title="gcc—C语言编译系统"></a>gcc—C语言编译系统</h2><h3 id="gcc的编译过程"><a href="#gcc的编译过程" class="headerlink" title="gcc的编译过程"></a>gcc的编译过程</h3><p>预处理、编译、汇编、链接。</p>
+<ol>
+<li>预处理</li>
+</ol>
+<p><code>gcc -E source.c -o output.i</code><br>E为只进行预处理<br>-o output.i为指定输出文件</p>
+<p>#include 被替换为头文件内容。</p>
+<p>#define 宏被展开。</p>
+<p>#ifdef &#x2F; #endif 等条件编译被处理。</p>
+<ol start="2">
+<li>编译</li>
+</ol>
+<p><code>gcc -S source.i -o output.s</code><br>S为只进行编译</p>
+<p>C 代码被转换为 CPU 相关的汇编指令（如 x86、ARM 等架构）。</p>
+<ol start="3">
+<li>汇编</li>
+</ol>
+<p><code>gcc -c source.s -o output.o</code></p>
+<p>汇编代码（如 mov, call 等）被转换为机器码（.o 文件，ELF 或 COFF 格式）。</p>
+<ol start="4">
+<li>链接</li>
+</ol>
+<p><code>gcc source.o -o myprogram</code>  # 链接标准库</p>
+<p>合并多个 .o 文件。</p>
+<ol start="5">
+<li>一步完成</li>
+</ol>
+<p>gcc hello.c -o hello</p>
+<h2 id="番外"><a href="#番外" class="headerlink" title="番外"></a>番外</h2><h3 id="文件系统概念"><a href="#文件系统概念" class="headerlink" title="文件系统概念"></a>文件系统概念</h3><p>注意：之所以Linux能支持多种文件系统，是因为Linux采用虚拟文件系统技术。</p>
+<ul>
+<li>虚拟文件系统(Virtual File System&#x2F;VFS)是操作系统和真正的文件系统之间的接口。它将各种不同的文件系统的信息进行转化，形成统一的格式后交给Linux操作系统处理，并将处理结果还原为原文件系统格式。对于Linux而言，它所处理的是统一的虚拟文件系统，而不需要知道文件所采用的真实的文件系统。由于采用了虚拟文件系统技术，Linux支持的文件系统，包括DOS的msdos、Windows XP的fat32、光盘的iso9660，还有实现网络共享的NFS等文件系统。</li>
+</ul>
+<p><img src="/img/2025_4_29/001.png" alt="404"></p>
+<h4 id="做到了什么"><a href="#做到了什么" class="headerlink" title="做到了什么"></a>做到了什么</h4><ul>
+<li><p>当你通过 Linux 的命令（如 ls 或 cat）访问这些设备时，不需要为每种文件系统编写不同的代码。</p>
+</li>
+<li><p>VFS 提供统一的系统调用（如 open()、read()、write()），应用程序只需与 VFS 交互，无需关心底层文件系统的差异。</p>
+</li>
+</ul>
+<h4 id="对比无-VFS-的情况"><a href="#对比无-VFS-的情况" class="headerlink" title="对比无 VFS 的情况"></a>对比无 VFS 的情况</h4><ul>
+<li>如果没有 VFS，应用程序需要针对每种文件系统实现不同的代码路径（如 if (is_fat32) { … } else if (is_ntfs) { … }），导致复杂性和维护成本极高。</li>
+</ul>
+<h3 id="职位"><a href="#职位" class="headerlink" title="职位"></a>职位</h3><ol>
+<li>前端：Vue</li>
+<li>后端：Spring Boot</li>
+<li>测试：测试工具</li>
+<li>售前：demo版本</li>
+<li>运维与交付：对客户培训</li>
+</ol>
+<h3 id="工具"><a href="#工具" class="headerlink" title="工具"></a>工具</h3><ol>
+<li>finalshell：国产远程控制Linux软件</li>
+</ol>
+<h3 id="管道"><a href="#管道" class="headerlink" title="管道"></a>管道</h3><ol>
+<li>“|”是Linux管道命令操作符，简称管道符。使用此管道符“|”可以将两个命令分隔开，“|”左边命令的输出就会作为“|”右边命令的输入，此命令可连续使用，第一个命令的输出会作为第二个命令的输入，第二个命令的输出又会作为第三个命令的输入，依此类推。</li>
+</ol>
+<p><img src="/img/2025_2_26/002.png" alt="404"></p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="/">陈淀</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="https://chenhongyang86.fun/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/">https://chenhongyang86.fun/2025/02/18/Linux%E8%AF%BE%E7%A8%8B%E6%80%BB%E7%BB%93%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%E4%B8%AD%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="https://chenhongyang86.fun" target="_blank">陈同学的桃花源</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Linux/">Linux</a></div><div class="post-share"><div class="social-share" data-image="/img/%E6%8A%A4%E7%9C%BC-%E7%AA%97.png" data-sites="wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i>赞助</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/img/WeChatPay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/WeChatPay.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/AliPay.jpg" target="_blank"><img class="post-qr-code-img" src="/img/AliPay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/2025/02/19/C%E8%AF%AD%E8%A8%80%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%88%E6%8C%81%E7%BB%AD%E6%9B%B4%E6%96%B0%EF%BC%89/" title="C语言相关知识点（持续更新）"><img class="cover" src="/img/%E4%BA%91-%E5%A4%A9%E7%A9%BA-%E5%B1%B1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">C语言相关知识点（持续更新）</div></div><div class="info-2"><div class="info-item-1"> 本章内容持续收录C语言的一些知识点  表达式必须是可以修改的左值123int a = 1;int b = 2;a + b = 3; 表达式 a + b 不是一个左值，因为它不能被修改。如果您尝试将 a + b 赋值为 3，则会收到一个编译错误，提示“表达式必须是可以修改的左值”。 指针与指向指针的指针由于C语言的函数传值机制，修改值需要用指针。而修改指针就得用指向指针的指针（**）。—以单链表的初始化为例 1234567891011121314151617typedef struct LinkNode &#123;    int data;    struct LinkNode* next;&#125;LinkNode,*LinkList;void init(LinkNode** l) &#123;    LinkNode* p = (LinkList)malloc(sizeof(LinkNode));    *l = p;    (*l)-&gt;data = 98;    (*l)-&gt;next = NULL;&#125;int main(void) &#123;  ...</div></div></div></a><a class="pagination-related" href="/2025/02/16/VCD-DVD%E4%B8%8A%E7%9A%84-dat%E6%96%87%E4%BB%B6%E8%BD%AC%E6%8D%A2%E6%88%90mp4%E7%9A%84%E6%96%B9%E6%B3%95/" title="VCD/DVD上的.dat文件转换成mp4的方法"><img class="cover" src="/img/%E4%BA%91-%E5%A4%A9%E7%A9%BA-%E5%B1%B1.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">VCD/DVD上的.dat文件转换成mp4的方法</div></div><div class="info-2"><div class="info-item-1">点击分享的连接点击这里 记录前些天姥爷让我把DVD上的视频转到硬盘里，我就答应了，弄了好一会，尝试了各种方法，都以失败告终。我索性不管了，待到离开家前往学校的前一天晚上，我突然想起来此事，于是从10点弄到12点，最终在12点在硬盘上测试通过，宣告着此次事件的成功完成。 其实这只是一件小事，但是其中有许多令我反思的地方。连我这个家庭成员曾经对家人许下的诺言，一个晚上过去，随着黎明的到来而烟消云散了，跟何况其他人呢？当成功的一刻，我很开心，因为我不想带着遗憾去上学，而这种所谓的遗憾，是我本应该很轻松完成的。 最后，再次引用王哥对我说的那句话的节选：  希望哥们养成做事严谨的习惯  </div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/2025/01/18/%E5%8D%8E%E4%B8%BA%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%BB%93%E8%AF%BE%E6%80%BB%E7%BB%93%E4%B8%8E%E5%85%B3%E4%BA%8ELinux%E7%9A%84%E7%9F%A5%E8%AF%86/" title="华为大数据结课总结与关于Linux的知识"><img class="cover" src="/img/%E6%8A%A4%E7%9C%BC-%E7%AA%97.png" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="far fa-calendar-alt fa-fw"></i> 2025-01-18</div><div class="info-item-2">华为大数据结课总结与关于Linux的知识</div></div><div class="info-2"><div class="info-item-1">☆Linux基础命令总结  切换到根目录  1cd /  切换到某个文件夹下（这里以root为例,root不要写成&#x2F;root）  1cd root  显示当前目录  1pwd  返回上一级  1cd ..  看有啥文件  1ls  看看指定目录下有啥文件  1ls /路径  打包压缩，解包解压（tar命令）  解压到指定文件夹   z ：表示 tar 包是被 gzip 压缩过的 (后缀是.tar.gz)，所以解压时需要用 gunzip 解压 (.tar不需要)  x ：表示 从 tar 包中把文件提取出来  v ：表示 显示打包过程详细信息  f ：指定被处理的文件是什么  hadoop-2.8.3.tar.gz为待解压的文件  后面是解压到指定文件夹 1tar -zxvf hadoop-2.8.3.tar.gz -C /home/modules  解压到当前文件夹   1tar -zxvf hadoop-2.8.3.tar.gz  复制（cp）前者为源文件，后者为目的地   1cp...</div></div></div></a></div></div><hr class="custom-hr"/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/My.jpg" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">陈淀</div><div class="author-info-description"></div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">72</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">30</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/1chendian2"><i class="fab fa-github"></i><span>关注我</span></a><div class="card-info-social-icons"><a class="social-icon" href="/img/QQQR.jpg" target="_blank" title="QQ"><i class="fa-brands fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="/img/WeQR.jpg" target="_blank" title="WeChat"><i class="fa-brands fa-weixin" style="color: #4a7dbe;"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">欢迎阁下光临此博客，让我们一起文峰采玉、墨海探珠！</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">Linux常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell"><span class="toc-number">1.1.</span> <span class="toc-text">Shell</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E7%89%88%E6%9C%AC"><span class="toc-number">1.2.</span> <span class="toc-text">Linux版本</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E4%B8%8EBash"><span class="toc-number">1.3.</span> <span class="toc-text">Shell与Bash</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E5%91%BD%E4%BB%A4%E4%B8%8EBash%E5%91%BD%E4%BB%A4"><span class="toc-number">1.4.</span> <span class="toc-text">Shell命令与Bash命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E7%95%8C%E9%9D%A2"><span class="toc-number">1.5.</span> <span class="toc-text">Shell界面</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="toc-number">1.6.</span> <span class="toc-text">命令格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4"><span class="toc-number">1.7.</span> <span class="toc-text">简单命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.8.</span> <span class="toc-text">文件系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.</span> <span class="toc-text">文件操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E6%98%BE%E7%A4%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.1.</span> <span class="toc-text">文件显示命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%B9%E9%85%8D%E3%80%81%E6%8E%92%E5%BA%8F%E3%80%81%E6%98%BE%E7%A4%BA%E6%8C%87%E5%AE%9A%E5%86%85%E5%AE%B9%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.2.</span> <span class="toc-text">匹配、排序、显示指定内容的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%92%8C%E6%AF%94%E8%BE%83%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.3.</span> <span class="toc-text">查找和比较文件的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6%E3%80%81%E5%88%A0%E9%99%A4%E5%92%8C%E7%A7%BB%E5%8A%A8%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.4.</span> <span class="toc-text">复制、删除和移动文件的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%86%85%E5%AE%B9%E7%BB%9F%E8%AE%A1%E5%91%BD%E4%BB%A4"><span class="toc-number">1.9.5.</span> <span class="toc-text">文件内容统计命令</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E5%8F%8A%E5%85%B6%E6%93%8D%E4%BD%9C%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.</span> <span class="toc-text">目录及其操作命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E7%9B%AE%E5%BD%95"><span class="toc-number">1.10.1.</span> <span class="toc-text">各种目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E8%B7%AF%E5%BE%84%E4%B8%8E%E7%9B%B8%E5%AF%B9%E8%B7%AF%E5%BE%84"><span class="toc-number">1.10.2.</span> <span class="toc-text">绝对路径与相对路径</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E5%92%8C%E5%88%A0%E9%99%A4%E7%9B%AE%E5%BD%95"><span class="toc-number">1.10.3.</span> <span class="toc-text">创建和删除目录</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E5%B7%A5%E4%BD%9C%E7%9B%AE%E5%BD%95%E5%92%8C%E6%98%BE%E7%A4%BA%E7%9B%AE%E5%BD%95%E5%86%85%E5%AE%B9"><span class="toc-number">1.10.4.</span> <span class="toc-text">改变工作目录和显示目录内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5%E6%96%87%E4%BB%B6%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.5.</span> <span class="toc-text">链接文件的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E6%96%87%E4%BB%B6%E6%88%96%E8%80%85%E7%9B%AE%E5%BD%95%E5%AD%98%E5%8F%96%E6%9D%83%E9%99%90%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.6.</span> <span class="toc-text">改变文件或者目录存取权限的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B9%E5%8F%98%E7%94%A8%E6%88%B7%E7%BB%84%E5%92%8C%E6%96%87%E4%BB%B6%E4%B8%BB%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.7.</span> <span class="toc-text">改变用户组和文件主的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%81%94%E6%9C%BA%E5%B8%AE%E5%8A%A9%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.8.</span> <span class="toc-text">联机帮助命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E5%85%B3%E8%BF%9B%E7%A8%8B%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">1.10.9.</span> <span class="toc-text">有关进程的命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%9A%84%E5%8E%8B%E7%BC%A9%E4%B8%8E%E8%A7%A3%E5%8E%8B%E7%BC%A9"><span class="toc-number">1.10.10.</span> <span class="toc-text">文件的压缩与解压缩</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E6%9C%AC%E7%BC%96%E8%BE%91"><span class="toc-number">2.</span> <span class="toc-text">文本编辑</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vi%E7%9A%84%E4%B8%89%E7%A7%8D%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.</span> <span class="toc-text">vi的三种工作方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.1.</span> <span class="toc-text">命令方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.2.</span> <span class="toc-text">输入方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ex%E8%BD%AC%E4%B9%89%E6%96%B9%E5%BC%8F"><span class="toc-number">2.2.3.</span> <span class="toc-text">ex转义方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5%E4%B8%8E%E9%80%80%E5%87%BAvi"><span class="toc-number">2.3.</span> <span class="toc-text">进入与退出vi</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9B%E5%85%A5vi"><span class="toc-number">2.3.1.</span> <span class="toc-text">进入vi</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%80%E5%87%BAvi"><span class="toc-number">2.3.2.</span> <span class="toc-text">退出vi</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%9A%84%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.</span> <span class="toc-text">命令模式下的命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E5%85%A5%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.1.</span> <span class="toc-text">插入命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%84%E5%8A%A0%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.2.</span> <span class="toc-text">附加命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%BC%80%E5%91%BD%E4%BB%A4%EF%BC%88%E5%BC%80%E8%BE%9F%E6%96%B0%E8%A1%8C%EF%BC%89"><span class="toc-number">2.4.3.</span> <span class="toc-text">打开命令（开辟新行）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87%E7%9A%84%E5%85%B6%E4%BB%96%E5%91%BD%E4%BB%A4"><span class="toc-number">2.4.4.</span> <span class="toc-text">移动光标的其他命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E7%A7%BB%E5%8A%A8%E5%85%89%E6%A0%87"><span class="toc-number">2.4.5.</span> <span class="toc-text">命令模式下移动光标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F%E4%B8%8B%E6%96%87%E6%9C%AC%E4%BF%AE%E6%94%B9"><span class="toc-number">2.4.6.</span> <span class="toc-text">命令模式下文本修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.5.</span> <span class="toc-text">输入模式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%89%E6%A0%87%E7%9A%84%E7%A7%BB%E5%8A%A8"><span class="toc-number">2.5.1.</span> <span class="toc-text">光标的移动</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E6%96%87%E6%9C%AC"><span class="toc-number">2.5.2.</span> <span class="toc-text">输入文本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ex%E8%BD%AC%E4%B9%89%E6%A8%A1%E5%BC%8F"><span class="toc-number">2.6.</span> <span class="toc-text">ex转义模式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Linux-Shell%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1"><span class="toc-number">3.</span> <span class="toc-text">Linux Shell程序设计</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E8%84%9A%E6%9C%AC%E7%9A%84%E6%A6%82%E8%BF%B0%E3%80%81%E5%BB%BA%E7%AB%8B%E4%B8%8E%E6%89%A7%E8%A1%8C"><span class="toc-number">3.1.</span> <span class="toc-text">Shell脚本的概述、建立与执行</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A6%82%E8%BF%B0"><span class="toc-number">3.1.1.</span> <span class="toc-text">概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%BA%E7%AB%8B"><span class="toc-number">3.1.2.</span> <span class="toc-text">建立</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E7%A7%8D%E6%89%A7%E8%A1%8C%E6%96%B9%E5%BC%8F"><span class="toc-number">3.1.3.</span> <span class="toc-text">三种执行方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E4%B8%8E%E6%89%A7%E8%A1%8C%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4"><span class="toc-number">3.2.</span> <span class="toc-text">显示与执行历史命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA"><span class="toc-number">3.2.1.</span> <span class="toc-text">显示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C"><span class="toc-number">3.2.2.</span> <span class="toc-text">执行</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%8E%86%E5%8F%B2%E5%91%BD%E4%BB%A4%E7%8E%AF%E5%A2%83"><span class="toc-number">3.2.3.</span> <span class="toc-text">配置历史命令环境</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8D%E7%A7%B0%E8%A1%A5%E5%85%A8"><span class="toc-number">3.3.</span> <span class="toc-text">名称补全</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%AB%E5%90%8D"><span class="toc-number">3.4.</span> <span class="toc-text">别名</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-number">3.5.</span> <span class="toc-text">特殊字符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%8F%B7"><span class="toc-number">3.6.</span> <span class="toc-text">引号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E3%80%81%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-number">3.7.</span> <span class="toc-text">输入、输出重定向符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E9%87%8D%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-number">3.7.1.</span> <span class="toc-text">输入重定向符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">3.7.2.</span> <span class="toc-text">输出重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BE%93%E5%87%BA%E9%99%84%E5%8A%A0%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-number">3.7.3.</span> <span class="toc-text">输出附加定向符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E7%94%A8%E8%BE%93%E5%85%A5%E4%B8%8E%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">3.7.4.</span> <span class="toc-text">复用输入与输出重定向</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B3%E6%97%B6%E6%96%87%E4%BB%B6%E5%AE%9A%E5%90%91%E7%AC%A6"><span class="toc-number">3.7.5.</span> <span class="toc-text">即时文件定向符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E6%96%87%E4%BB%B6%E6%8F%8F%E8%BF%B0%E5%AD%97%E6%9C%89%E5%85%B3%E7%9A%84%E9%87%8D%E5%AE%9A%E5%90%91"><span class="toc-number">3.7.6.</span> <span class="toc-text">与文件描述字有关的重定向</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B3%A8%E9%87%8A%E3%80%81%E7%AE%A1%E9%81%93%E7%BA%BF%E3%80%81%E5%90%8E%E5%8F%B0%E5%91%BD%E4%BB%A4"><span class="toc-number">3.8.</span> <span class="toc-text">注释、管道线、后台命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">3.9.</span> <span class="toc-text">命令操作符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Shell%E5%8F%98%E9%87%8F"><span class="toc-number">3.10.</span> <span class="toc-text">Shell变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E8%87%AA%E5%AE%9A%E4%B9%89%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-number">3.10.1.</span> <span class="toc-text">用户自定义的变量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84"><span class="toc-number">3.11.</span> <span class="toc-text">数组</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E3%80%81%E8%BE%93%E5%87%BA%E5%91%BD%E4%BB%A4"><span class="toc-number">3.12.</span> <span class="toc-text">输入、输出命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%8D%E7%BD%AE%E5%8F%82%E6%95%B0"><span class="toc-number">3.13.</span> <span class="toc-text">位置参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97"><span class="toc-number">3.14.</span> <span class="toc-text">算术运算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#let"><span class="toc-number">3.14.1.</span> <span class="toc-text">let</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.</span> <span class="toc-text">流程控制语句</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#if%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.1.</span> <span class="toc-text">if语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E6%B5%8B%E8%AF%95"><span class="toc-number">3.15.2.</span> <span class="toc-text">条件测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#case%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.3.</span> <span class="toc-text">case语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#while%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.4.</span> <span class="toc-text">while语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#until%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.5.</span> <span class="toc-text">until语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#for%E8%AF%AD%E5%8F%A5"><span class="toc-number">3.15.6.</span> <span class="toc-text">for语句</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">3.15.7.</span> <span class="toc-text">其他</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0"><span class="toc-number">3.15.8.</span> <span class="toc-text">函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E4%BA%9B%E7%AE%80%E5%8D%95%E5%91%BD%E4%BB%A4"><span class="toc-number">3.15.9.</span> <span class="toc-text">一些简单命令</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%A4%E7%A7%8D%E9%81%8D%E5%8E%86%E6%96%B9%E5%BC%8F"><span class="toc-number">3.15.10.</span> <span class="toc-text">两种遍历方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#gcc%E2%80%94C%E8%AF%AD%E8%A8%80%E7%BC%96%E8%AF%91%E7%B3%BB%E7%BB%9F"><span class="toc-number">4.</span> <span class="toc-text">gcc—C语言编译系统</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#gcc%E7%9A%84%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">4.1.</span> <span class="toc-text">gcc的编译过程</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%95%AA%E5%A4%96"><span class="toc-number">5.</span> <span class="toc-text">番外</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5"><span class="toc-number">5.1.</span> <span class="toc-text">文件系统概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%81%9A%E5%88%B0%E4%BA%86%E4%BB%80%E4%B9%88"><span class="toc-number">5.1.1.</span> <span class="toc-text">做到了什么</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94%E6%97%A0-VFS-%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">5.1.2.</span> <span class="toc-text">对比无 VFS 的情况</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%81%8C%E4%BD%8D"><span class="toc-number">5.2.</span> <span class="toc-text">职位</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7"><span class="toc-number">5.3.</span> <span class="toc-text">工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%A1%E9%81%93"><span class="toc-number">5.4.</span> <span class="toc-text">管道</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2025/06/02/%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E6%97%85%E8%A1%8C/" title="呼和浩特旅行"><img src="/img/%E4%B8%98%E9%99%B5-%E4%BA%91-%E5%9C%BA%E5%9C%B0.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="呼和浩特旅行"/></a><div class="content"><a class="title" href="/2025/06/02/%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E6%97%85%E8%A1%8C/" title="呼和浩特旅行">呼和浩特旅行</a><time datetime="2025-06-02T08:17:37.000Z" title="发表于 2025-06-02 16:17:37">2025-06-02</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2025/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/" title="操作系统（408考研）"><img src="/img/%E6%A3%AE%E6%9E%97-%E8%BD%A6%E7%AB%99.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="操作系统（408考研）"/></a><div class="content"><a class="title" href="/2025/06/02/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/" title="操作系统（408考研）">操作系统（408考研）</a><time datetime="2025-06-02T02:01:54.000Z" title="发表于 2025-06-02 10:01:54">2025-06-02</time></div></div></div></div></div></div></main><footer id="footer" style="background: linear-gradient(20deg, #0062be, #925696, #cc426e, #fb0347);"><div id="footer-wrap"><div class="copyright">&copy;2024 - 2025 By 陈淀</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">欲买桂花同载酒，终不似，少年游<br> 本网站由腾讯云 <a target="_blank" rel="noopener" href="https://cloud.tencent.com/"><img src="/img/2025_1_14/002.png" alt="图片去外星球了"></a> 提供域名服务 </div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="前往评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const isShuoshuo = GLOBAL_CONFIG_SITE.isShuoshuo
+  const option = null
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'https://www.chenhongyang86.fun/',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(res => {
+      countELement.textContent = res[0].count
+    }).catch(err => {
+      console.error(err)
+    })
+  }
+
+  const init = (el = document, path = location.pathname) => {
+    twikoo.init({
+      el: el.querySelector('#twikoo-wrap'),
+      envId: 'https://www.chenhongyang86.fun/',
+      region: '',
+      onCommentLoaded: () => {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      },
+      ...option,
+      path: isShuoshuo ? path : (option && option.path) || path
+    })
+
+    
+
+    isShuoshuo && (window.shuoshuoComment.destroyTwikoo = () => {
+      if (el.children.length) {
+        el.innerHTML = ''
+        el.classList.add('no-comment')
+      }
+    })
+  }
+
+  const loadTwikoo = (el, path) => {
+    if (typeof twikoo === 'object') setTimeout(() => init(el, path), 0)
+    else btf.getScript('https://cdn.jsdelivr.net/npm/twikoo/dist/twikoo.all.min.js').then(() => init(el, path))
+  }
+
+  if (isShuoshuo) {
+    'Twikoo' === 'Twikoo'
+      ? window.shuoshuoComment = { loadComment: loadTwikoo }
+      : window.loadOtherComment = loadTwikoo
+    return
+  }
+
+  if ('Twikoo' === 'Twikoo' || !false) {
+    if (false) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = loadTwikoo
+  }
+})()</script></div><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/activate-power-mode.min.js"></script><script>POWERMODE.colorful = true;
+POWERMODE.shake = false;
+POWERMODE.mobile = true;
+document.body.addEventListener('input', POWERMODE);
+</script><script id="click-show-text" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-show-text.min.js" data-mobile="true" data-text="I,LOVE,YOU" data-fontsize="15px" data-random="false" async="async"></script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="嘿，小子，怎么不输入内容" type="text"/></div></div><hr/><div id="local-search-results"></div><div id="local-search-stats-wrap"></div></div></div><div id="search-mask"></div><script src="/js/search/local-search.js"></script></div></div></body></html>
