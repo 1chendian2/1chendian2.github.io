@@ -4,12 +4,47 @@
   
     
     <entry>
+      <title>Hexo故障收录</title>
+      <link href="/2025/06/04/Hexo%E6%95%85%E9%9A%9C%E6%94%B6%E5%BD%95/"/>
+      <url>/2025/06/04/Hexo%E6%95%85%E9%9A%9C%E6%94%B6%E5%BD%95/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="Introductory"><a href="#Introductory" class="headerlink" title="Introductory"></a>Introductory</h2><p>Due to the mess as well as uneven on the internet,I decide to collect effective and efficient methods to address disgusting problens.<br>I am pleasure to accept everyone of you precious opinions.</p><h2 id="hexo-deploy-上传报错"><a href="#hexo-deploy-上传报错" class="headerlink" title="hexo deploy 上传报错"></a>hexo deploy 上传报错</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connect to host github.com port 22: Connection refused</span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[33mError: Spawn failed     </span><br><span class="line">at ChildProcess.&lt;anonymous&gt; (D:\Blog\node_modules\hexo-deployer-git\node_modules\hexo-util\lib\spawn.js:51:21)     </span><br><span class="line">at ChildProcess.emit (node:events:524:28)     </span><br><span class="line">at cp.emit (D:\Blog\node_modules\cross-spawn\lib\enoent.js:34:29)     </span><br><span class="line">at ChildProcess._handle.onexit (node:internal/child_process:293:12)[39m</span><br></pre></td></tr></table></figure><h3 id="首先说明"><a href="#首先说明" class="headerlink" title="首先说明"></a>首先说明</h3><p>当hexo发生错误时，应该首先看出错的原因（第一栏代码），而非hexo出错的位置（第二栏代码）。笔者认为在不改动系统文件的情况下，不必去排查系统文件错误。</p><h3 id="意图"><a href="#意图" class="headerlink" title="意图"></a>意图</h3><p>ssh: connect to host github.com port 22: Connection refused这个错误提示的是连接github.com的22端口被拒绝了。</p><h3 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h3><p><strong>使用GitHub的443端口</strong><br>22端口可能被防火墙屏蔽了，可以尝试连接GitHub的443端口。</p><ol><li>这个方案有效的前提是：执行命令<code>ssh -T -p 443 git@ssh.github.com</code>后不再提示connection refused。</li><li>打开文件资源管理器：<code>C:</code>-&gt;<code>用户</code>-&gt;<code>用户名</code>-&gt;<code>.ssh</code></li><li>新建<code>config</code>文件（无后缀）</li><li>添加</li></ol><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Host github.com</span><br><span class="line">  Hostname ssh.github.com</span><br><span class="line">  Port 443</span><br></pre></td></tr></table></figure><ol start="5"><li>修改完config文件后，使用<code>ssh -T git@github.com</code>来测试和GitHub的网络通信是否正常，如果提示<code>Hi xxxxx! You&#39;ve successfully authenticated, but GitHub does notprovide shell access.</code> 就表示一切正常了。</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> Hexo </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>呼和浩特旅行</title>
       <link href="/2025/06/02/%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E6%97%85%E8%A1%8C/"/>
       <url>/2025/06/02/%E5%91%BC%E5%92%8C%E6%B5%A9%E7%89%B9%E6%97%85%E8%A1%8C/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h2 id="到新郑机场"><a href="#到新郑机场" class="headerlink" title="到新郑机场"></a>到新郑机场</h2><p>从焦作到新郑机场：公交+动车<br><img src="/img/2025_6_2/003.png" alt="404"></p><h2 id="第一次坐飞机，激动"><a href="#第一次坐飞机，激动" class="headerlink" title="第一次坐飞机，激动"></a>第一次坐飞机，激动</h2><p><img src="/img/2025_6_2/004.png" alt="404"><br>起飞时、遇颠簸时：我再也不坐飞机了<br>下飞机时：哎妈呀，飞机还是块呀</p><h2 id="呃呃，为何一下飞机，坐的地铁上全是广告，有些无语"><a href="#呃呃，为何一下飞机，坐的地铁上全是广告，有些无语" class="headerlink" title="呃呃，为何一下飞机，坐的地铁上全是广告，有些无语"></a>呃呃，为何一下飞机，坐的地铁上全是广告，有些无语</h2><p><img src="/img/2025_6_2/005.png" alt="404"></p><h2 id="草间弥生"><a href="#草间弥生" class="headerlink" title="草间弥生"></a>草间弥生</h2><p><img src="/img/2025_6_2/006.png" alt="404"></p><h2 id="我对韩国感兴趣"><a href="#我对韩国感兴趣" class="headerlink" title="我对韩国感兴趣"></a>我对韩国感兴趣</h2><p><img src="/img/2025_6_2/007.png" alt="404"></p><h2 id="喜德盛自行车，很好，我的GT300骑起来很带劲"><a href="#喜德盛自行车，很好，我的GT300骑起来很带劲" class="headerlink" title="喜德盛自行车，很好，我的GT300骑起来很带劲"></a>喜德盛自行车，很好，我的GT300骑起来很带劲</h2><p><img src="/img/2025_6_2/018.png" alt="404"></p><h2 id="好天气"><a href="#好天气" class="headerlink" title="好天气"></a>好天气</h2><p><img src="/img/2025_6_2/008.png" alt="404"></p><h2 id="一晚上速通7个商场，时间紧，任务重"><a href="#一晚上速通7个商场，时间紧，任务重" class="headerlink" title="一晚上速通7个商场，时间紧，任务重"></a>一晚上速通7个商场，时间紧，任务重</h2><p><img src="/img/2025_6_2/019.png" alt="404"></p><h2 id="艺术学院，保安不让我进"><a href="#艺术学院，保安不让我进" class="headerlink" title="艺术学院，保安不让我进"></a>艺术学院，保安不让我进</h2><p><img src="/img/2025_6_2/009.png" alt="404"></p><h2 id="国家公园，没啥东西，但是值得爬爬山看看风景"><a href="#国家公园，没啥东西，但是值得爬爬山看看风景" class="headerlink" title="国家公园，没啥东西，但是值得爬爬山看看风景"></a>国家公园，没啥东西，但是值得爬爬山看看风景</h2><p><img src="/img/2025_6_2/010.png" alt="404"></p><h2 id="内蒙古艺术馆最喜欢的画，本人钟意蓝色调的画"><a href="#内蒙古艺术馆最喜欢的画，本人钟意蓝色调的画" class="headerlink" title="内蒙古艺术馆最喜欢的画，本人钟意蓝色调的画"></a>内蒙古艺术馆最喜欢的画，本人钟意蓝色调的画</h2><p><img src="/img/2025_6_2/011.png" alt="404"></p><h2 id="艺术馆，一大学生做的毕设，作品名：藏宝箱。看一次笑一次，感觉回到了古代，贵重的东西不会放这，不贵的更不会放这。"><a href="#艺术馆，一大学生做的毕设，作品名：藏宝箱。看一次笑一次，感觉回到了古代，贵重的东西不会放这，不贵的更不会放这。" class="headerlink" title="艺术馆，一大学生做的毕设，作品名：藏宝箱。看一次笑一次，感觉回到了古代，贵重的东西不会放这，不贵的更不会放这。"></a>艺术馆，一大学生做的毕设，作品名：藏宝箱。看一次笑一次，感觉回到了古代，贵重的东西不会放这，不贵的更不会放这。</h2><p><img src="/img/2025_6_2/020.png" alt="404"></p><h2 id="IOT"><a href="#IOT" class="headerlink" title="IOT"></a>IOT</h2><p><img src="/img/2025_6_2/012.png" alt="404"></p><h2 id="不要放大看（摄于内蒙古科技馆，无任何不良引导，仅限于人体穴位交流学习）"><a href="#不要放大看（摄于内蒙古科技馆，无任何不良引导，仅限于人体穴位交流学习）" class="headerlink" title="不要放大看（摄于内蒙古科技馆，无任何不良引导，仅限于人体穴位交流学习）"></a>不要放大看（摄于内蒙古科技馆，无任何不良引导，仅限于人体穴位交流学习）</h2><p><img src="/img/2025_6_2/013.png" alt="404"></p><h2 id="号外！男大学生在空间站刷抖音！"><a href="#号外！男大学生在空间站刷抖音！" class="headerlink" title="号外！男大学生在空间站刷抖音！"></a>号外！男大学生在空间站刷抖音！</h2><p><img src="/img/2025_6_2/014.png" alt="404"></p><h2 id="退房尽量整理下，善始善终"><a href="#退房尽量整理下，善始善终" class="headerlink" title="退房尽量整理下，善始善终"></a>退房尽量整理下，善始善终</h2><p><img src="/img/2025_6_2/015.png" alt="404"></p><h2 id="再见，HOHHOT"><a href="#再见，HOHHOT" class="headerlink" title="再见，HOHHOT"></a>再见，HOHHOT</h2><p><img src="/img/2025_6_2/016.png" alt="404"></p><h2 id="一碗米要我9块人民币啊，金子做的吧"><a href="#一碗米要我9块人民币啊，金子做的吧" class="headerlink" title="一碗米要我9块人民币啊，金子做的吧"></a>一碗米要我9块人民币啊，金子做的吧</h2><p><img src="/img/2025_6_2/017.png" alt="404"></p>]]></content>
       
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+          <category> 旅行 </category>
+          
+      </categories>
       
       
     </entry>
@@ -27,6 +62,8 @@
       <categories>
           
           <category> 技术 </category>
+          
+          <category> 操作系统 </category>
           
       </categories>
       
@@ -101,12 +138,20 @@
     
     
     <entry>
-      <title>解答计算机组成原理一些问题</title>
-      <link href="/2025/05/05/%E8%A7%A3%E7%AD%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/"/>
-      <url>/2025/05/05/%E8%A7%A3%E7%AD%94%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%E4%B8%80%E4%BA%9B%E9%97%AE%E9%A2%98/</url>
+      <title>计算机组成原理（408考研）</title>
+      <link href="/2025/05/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/"/>
+      <url>/2025/05/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BB%84%E6%88%90%E5%8E%9F%E7%90%86%EF%BC%88408%E8%80%83%E7%A0%94%EF%BC%89/</url>
       
         <content type="html"><![CDATA[<link rel="stylesheet" class="aplayer-secondary-style-marker" href="\assets\css\APlayer.min.css"><script src="\assets\js\APlayer.min.js" class="aplayer-secondary-script-marker"></script><h3 id="4"><a href="#4" class="headerlink" title="4"></a>4</h3><h4 id="2"><a href="#2" class="headerlink" title="2"></a>2</h4><h5 id="为什么间接寻址相对直接寻址可扩大寻址范围"><a href="#为什么间接寻址相对直接寻址可扩大寻址范围" class="headerlink" title="为什么间接寻址相对直接寻址可扩大寻址范围"></a>为什么间接寻址相对直接寻址可扩大寻址范围</h5><p>假设：</p><p>计算机的 指令字长16位，其中 地址字段占8位（直接寻址时）。</p><p>存储器的 地址总线宽度为16位（即最大寻址范围是64KB）。</p><p>内存单元存储的数据宽度也是 16位（即每个单元能存一个地址）。</p><ol><li>直接寻址的局限性<br>若采用直接寻址，地址字段仅8位，可直接寻址的范围是 2⁸ &#x3D; 256个单元（如0x00~0xFF）。</li></ol><p>这远小于存储器实际的64KB（16位地址）范围，造成了浪费。</p><ol start="2"><li>间接寻址的解决方式<br>间接寻址的地址字段（8位）不直接表示操作数地址，而是指向一个内存单元，该单元中存储了 完整的16位操作数地址。</li></ol><p>例如：</p><p>指令中的地址字段为 0x40（8位）。</p><p>CPU先访问内存单元 0x40，读取其中存储的 16位地址（如 0xA010）。</p><p>最终操作数位于 0xA010（16位地址，突破了8位限制）。</p><h4 id="3"><a href="#3" class="headerlink" title="3"></a>3</h4><h5 id="x86架构与ARM架构"><a href="#x86架构与ARM架构" class="headerlink" title="x86架构与ARM架构"></a>x86架构与ARM架构</h5><p>特性        x86                         ARM<br>指令集    CISC（复杂指令）        RISC（精简指令）<br>功耗       较高（性能优先）        较低（能效优先）<br>主导领域    PC、服务器、高性能计算    移动设备、嵌入式、IoT<br>生态Windows&#x2F;Linux主流             Android&#x2F;iOS主导</p><h5 id="cmp-v-s-test"><a href="#cmp-v-s-test" class="headerlink" title="cmp v.s. test"></a>cmp v.s. test</h5><p>CMP vs TEST 核心区别<br>指令底层操作主要用途            影响的关键标志位<br>CMP    OP1 - OP2比较数值大小        ZF, CF, SF, OF<br>TESTOP1 &amp; OP2检查位模式或判断零值ZF, SF</p><ol><li>cmp</li></ol><p>关键标志位：</p><p>ZF&#x3D;1：两数相等（OP1 &#x3D;&#x3D; OP2）。</p><p>CF&#x3D;1：无符号数 OP1 &lt; OP2。</p><p>SF≠OF：有符号数 OP1 &lt; OP2。</p><ol start="2"><li>test</li></ol><p>ZF&#x3D;1：结果为零（所有位按位与后为0）。</p><p>SF&#x3D;1：结果的最高位为1（负数）。</p>]]></content>
       
+      
+      <categories>
+          
+          <category> 技术 </category>
+          
+          <category> 计算机组成原理 </category>
+          
+      </categories>
       
       
     </entry>
